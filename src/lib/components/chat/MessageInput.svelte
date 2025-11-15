@@ -81,7 +81,40 @@
 	import Knobs from '../icons/Knobs.svelte';
 	import ValvesModal from '../workspace/common/ValvesModal.svelte';
 
-	const i18n = getContext('i18n');
+        const i18n = getContext('i18n');
+
+        const estimateTokenCount = (text: string): number => {
+                if (!text) {
+                        return 0;
+                }
+
+                let tokenCount = 0;
+                const hanziRegex = /[\u4e00-\u9fff\u3400-\u4dbf]/g;
+                const hanziMatches = text.match(hanziRegex);
+
+                if (hanziMatches) {
+                        tokenCount += hanziMatches.length;
+                }
+
+                const nonHanziText = text.replace(hanziRegex, ' ');
+
+                const normalized = nonHanziText
+                        // Remove common markdown characters that do not contribute to token count
+                        .replace(/[!\*`_>#+\-=|~<\[\]\(\)]/g, ' ')
+                        // Replace new lines with spaces for consistent splitting
+                        .replace(/\s+/g, ' ')
+                        .trim();
+
+                if (normalized.length > 0) {
+                        const wordLikePieces = normalized.split(' ').filter(Boolean);
+                        const charCount = normalized.length;
+                        const nonHanziTokenCount = Math.max(wordLikePieces.length, Math.ceil(charCount / 4));
+
+                        tokenCount += nonHanziTokenCount;
+                }
+
+                return tokenCount;
+        };
 
 	export let onChange: Function = () => {};
 	export let createMessagePair: Function;
@@ -99,7 +132,10 @@
 	export let history;
 	export let taskIds = null;
 
-	export let prompt = '';
+        export let prompt = '';
+        let estimatedTokenCount = 0;
+
+        $: estimatedTokenCount = estimateTokenCount(prompt);
 	export let files = [];
 
 	export let selectedToolIds = [];
@@ -1624,11 +1660,17 @@
 									</div>
 								</div>
 
-								<div class="self-end flex space-x-1 mr-1 shrink-0">
-									{#if (!history?.currentId || history.messages[history.currentId]?.done == true) && ($_user?.role === 'admin' || ($_user?.permissions?.chat?.stt ?? true))}
-										<!-- {$i18n.t('Record voice')} -->
-										<Tooltip content={$i18n.t('Dictate')}>
-											<button
+                                                                <div class="self-end flex space-x-1 mr-1 shrink-0">
+                                                                        <div
+                                                                                class="flex items-center px-2 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap"
+                                                                                aria-live="polite"
+                                                                        >
+                                                                                ≈ {estimatedTokenCount} token{estimatedTokenCount === 1 ? '' : 's'}
+                                                                        </div>
+                                                                        {#if (!history?.currentId || history.messages[history.currentId]?.done == true) && ($_user?.role === 'admin' || ($_user?.permissions?.chat?.stt ?? true))}
+                                                                                <!-- {$i18n.t('Record voice')} -->
+                                                                                <Tooltip content={$i18n.t('Dictate')}>
+                                                                                        <button
 												id="voice-input-button"
 												class=" text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 transition rounded-full p-1.5 mr-0.5 self-center"
 												type="button"
