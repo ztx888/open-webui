@@ -1,34 +1,43 @@
 name: Build and publish Docker image to GHCR
 
 on:
-  push:
-    branches: [ main ]
-    # 只有这些文件变动时才触发构建，可以随便改 / 删掉 paths 限制
-    paths:
-      - 'backend/**'
-      - 'src/**'
-      - 'Dockerfile'
-      - 'docker-compose.yaml'
-      - '.github/workflows/build-ghcr.yml'
   # 手动触发
   workflow_dispatch:
+  # 当 main 分支有相关改动时自动触发（可保留）
+  push:
+    branches: [ main ]
+    paths:
+      - "backend/**"
+      - "frontend/**"
+      - "src/**"
+      - "package.json"
+      - "package-lock.json"
+      - "Dockerfile"
+      - ".github/workflows/build-ghcr.yml"
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: openwebui
+  IMAGE_NAME: ztx888/openwebui
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
-      packages: write   # 允许往 GHCR 写镜像
+      packages: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Log in to GitHub Container Registry
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GHCR
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
@@ -36,9 +45,9 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
