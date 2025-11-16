@@ -88,6 +88,64 @@
                         return 0;
                 }
 
+                const hanRegex = /\p{Script=Han}/u;
+                const cjkPunctuationRegex = /[\u3000-\u303F]/u;
+                const fullWidthRegex = /[\uFF00-\uFFEF]/u;
+                const asciiLetterPunctuationRegex = /[\u0021-\u002F\u003A-\u0040\u0041-\u005A\u005B-\u0060\u0061-\u007A\u007B-\u007E]/;
+                const digitRegex = /[0-9]/;
+                const emojiRegex = /\p{Extended_Pictographic}/u;
+
+                let hanLikeCount = 0;
+                let asciiCount = 0;
+                let digitCount = 0;
+                let emojiCount = 0;
+                let otherCount = 0;
+
+                for (const char of text) {
+                        if (hanRegex.test(char)) {
+                                hanLikeCount++;
+                                continue;
+                        }
+
+                        if (cjkPunctuationRegex.test(char)) {
+                                hanLikeCount++;
+                                continue;
+                        }
+
+                        if (fullWidthRegex.test(char)) {
+                                hanLikeCount++;
+                                continue;
+                        }
+
+                        if (emojiRegex.test(char)) {
+                                emojiCount++;
+                                continue;
+                        }
+
+                        if (digitRegex.test(char)) {
+                                digitCount++;
+                                continue;
+                        }
+
+                        if (asciiLetterPunctuationRegex.test(char)) {
+                                asciiCount++;
+                                continue;
+                        }
+
+                        if (char.trim() === '') {
+                                continue;
+                        }
+
+                        otherCount++;
+                }
+
+                const hanLikeTokens = hanLikeCount * 1.4;
+                const asciiTokens = asciiCount / 2;
+                const digitTokens = Math.ceil(digitCount / 3);
+                const emojiTokens = emojiCount * 2;
+                const otherTokens = otherCount;
+
+                return Math.round(hanLikeTokens + asciiTokens + digitTokens + emojiTokens + otherTokens);
                 const normalized = text
                         // Remove common markdown characters that do not contribute to token count
                         .replace(/[!\*`_>#+\-=|~<\[\]\(\)]/g, ' ')
