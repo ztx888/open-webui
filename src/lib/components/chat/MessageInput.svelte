@@ -88,32 +88,64 @@
                         return 0;
                 }
 
-                let tokenCount = 0;
-                const hanziRegex = /[\u4e00-\u9fff\u3400-\u4dbf]/g;
-                const hanziMatches = text.match(hanziRegex);
+                const hanRegex = /\p{Script=Han}/u;
+                const cjkPunctuationRegex = /[\u3000-\u303F]/u;
+                const fullWidthRegex = /[\uFF00-\uFFEF]/u;
+                const asciiLetterPunctuationRegex = /[\u0021-\u002F\u003A-\u0040\u0041-\u005A\u005B-\u0060\u0061-\u007A\u007B-\u007E]/;
+                const digitRegex = /[0-9]/;
+                const emojiRegex = /\p{Extended_Pictographic}/u;
 
-                if (hanziMatches) {
-                        tokenCount += hanziMatches.length;
+                let hanLikeCount = 0;
+                let asciiCount = 0;
+                let digitCount = 0;
+                let emojiCount = 0;
+                let otherCount = 0;
+
+                for (const char of text) {
+                        if (hanRegex.test(char)) {
+                                hanLikeCount++;
+                                continue;
+                        }
+
+                        if (cjkPunctuationRegex.test(char)) {
+                                hanLikeCount++;
+                                continue;
+                        }
+
+                        if (fullWidthRegex.test(char)) {
+                                hanLikeCount++;
+                                continue;
+                        }
+
+                        if (emojiRegex.test(char)) {
+                                emojiCount++;
+                                continue;
+                        }
+
+                        if (digitRegex.test(char)) {
+                                digitCount++;
+                                continue;
+                        }
+
+                        if (asciiLetterPunctuationRegex.test(char)) {
+                                asciiCount++;
+                                continue;
+                        }
+
+                        if (char.trim() === '') {
+                                continue;
+                        }
+
+                        otherCount++;
                 }
 
-                const nonHanziText = text.replace(hanziRegex, ' ');
+                const hanLikeTokens = hanLikeCount * 1.4;
+                const asciiTokens = asciiCount / 2;
+                const digitTokens = Math.ceil(digitCount / 3);
+                const emojiTokens = emojiCount * 2;
+                const otherTokens = otherCount;
 
-                const normalized = nonHanziText
-                        // Remove common markdown characters that do not contribute to token count
-                        .replace(/[!\*`_>#+\-=|~<\[\]\(\)]/g, ' ')
-                        // Replace new lines with spaces for consistent splitting
-                        .replace(/\s+/g, ' ')
-                        .trim();
-
-                if (normalized.length > 0) {
-                        const wordLikePieces = normalized.split(' ').filter(Boolean);
-                        const charCount = normalized.length;
-                        const nonHanziTokenCount = Math.max(wordLikePieces.length, Math.ceil(charCount / 4));
-
-                        tokenCount += nonHanziTokenCount;
-                }
-
-                return tokenCount;
+                return Math.round(hanLikeTokens + asciiTokens + digitTokens + emojiTokens + otherTokens);
         };
 
 	export let onChange: Function = () => {};
