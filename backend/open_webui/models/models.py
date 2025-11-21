@@ -13,7 +13,7 @@ from pydantic import BaseModel, ConfigDict
 
 from sqlalchemy import or_, and_, func
 from sqlalchemy.dialects import postgresql, sqlite
-from sqlalchemy import BigInteger, Column, Text, JSON, Boolean
+from sqlalchemy import BigInteger, Column, Text, JSON, Boolean, Float
 
 
 from open_webui.utils.access_control import has_access
@@ -98,6 +98,12 @@ class Model(Base):
 
     is_active = Column(Boolean, default=True)
 
+    input_price_value = Column(Float, default=0)
+    input_price_unit = Column(Text, default="M")
+    output_price_value = Column(Float, default=0)
+    output_price_unit = Column(Text, default="M")
+    price_group_multiplier = Column(Float, default=1.0)
+
     updated_at = Column(BigInteger)
     created_at = Column(BigInteger)
 
@@ -112,6 +118,12 @@ class ModelModel(BaseModel):
     meta: ModelMeta
 
     access_control: Optional[dict] = None
+
+    input_price_value: float = 0
+    input_price_unit: str = "M"
+    output_price_value: float = 0
+    output_price_unit: str = "M"
+    price_group_multiplier: float = 1.0
 
     is_active: bool
     updated_at: int  # timestamp in epoch
@@ -141,6 +153,12 @@ class ModelForm(BaseModel):
     params: ModelParams
     access_control: Optional[dict] = None
     is_active: bool = True
+
+    input_price_value: float = 0
+    input_price_unit: str = "M"
+    output_price_value: float = 0
+    output_price_unit: str = "M"
+    price_group_multiplier: float = 1.0
 
 
 class ModelsTable:

@@ -139,6 +139,58 @@ DEFAULT_SOLUTION_TAGS = [("<|begin_of_solution|>", "<|end_of_solution|>")]
 DEFAULT_CODE_INTERPRETER_TAGS = [("<code_interpreter>", "</code_interpreter>")]
 
 
+def enrich_usage_with_cost(usage: dict, model: dict) -> dict:
+    """Attach token totals and cost information to usage based on model pricing."""
+
+    if not usage:
+        return usage
+
+    prompt_tokens = usage.get("prompt_tokens") or 0
+    completion_tokens = usage.get("completion_tokens") or 0
+    completion_details = usage.get("completion_tokens_details")
+    if not isinstance(completion_details, dict):
+        completion_details = {}
+    reasoning_tokens = completion_details.get("reasoning_tokens") or 0
+    usage["completion_tokens_details"] = completion_details
+
+    total_tokens = prompt_tokens + completion_tokens + reasoning_tokens
+    usage["total_tokens"] = total_tokens
+
+    model_info = model.get("info", {}) if isinstance(model, dict) else {}
+    input_price_value = model_info.get("input_price_value", 0) or 0
+    input_price_unit = (model_info.get("input_price_unit") or "M").upper()
+    output_price_value = model_info.get("output_price_value", 0) or 0
+    output_price_unit = (model_info.get("output_price_unit") or "M").upper()
+    price_group_multiplier = model_info.get("price_group_multiplier", 1.0) or 1.0
+
+    if input_price_unit == "K":
+        per_token_input_price = (input_price_value / 1000.0) * price_group_multiplier
+    else:
+        per_token_input_price = (input_price_value / 1_000_000.0) * price_group_multiplier
+
+    if output_price_unit == "K":
+        per_token_output_price = (
+            (output_price_value / 1000.0) * price_group_multiplier
+        )
+    else:
+        per_token_output_price = (
+            (output_price_value / 1_000_000.0) * price_group_multiplier
+        )
+
+    input_cost = prompt_tokens * per_token_input_price
+    output_cost = (completion_tokens + reasoning_tokens) * per_token_output_price
+    total_cost = input_cost + output_cost
+
+    usage["cost"] = {
+        "currency": "CNY",
+        "input": input_cost,
+        "output": output_cost,
+        "total": total_cost,
+    }
+
+    return usage
+
+
 def process_tool_result(
     request,
     tool_function_name,
@@ -1788,6 +1840,11 @@ async def process_chat_response(
                     else:
                         response_data = response
 
+                    if "usage" in response_data:
+                        response_data["usage"] = enrich_usage_with_cost(
+                            response_data.get("usage", {}), metadata.get("model", {})
+                        )
+
                     if "error" in response_data:
                         error = response_data.get("error")
 
@@ -2473,6 +2530,9 @@ async def process_chat_response(
                                     usage = data.get("usage", {}) or {}
                                     usage.update(data.get("timings", {}))  # llama.cpp
                                     if usage:
+                                        usage = enrich_usage_with_cost(
+                                            usage, metadata.get("model", {})
+                                        )
                                         await event_emitter(
                                             {
                                                 "type": "chat:completion",
