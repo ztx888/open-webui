@@ -152,19 +152,21 @@
 								? 'dark:text-gray-900 text-gray-100'
 								: 'invisible group-hover:visible transition'}"
 						>
-							<Tooltip content={dayjs(message.timestamp * 1000).format('LLLL')}>
+                                                        <Tooltip
+                                                                content={dayjs(message.timestamp * 1000).format('LL dddd LTS')}
+                                                        >
 								<!-- $i18n.t('Today at {{LOCALIZED_TIME}}') -->
 								<!-- $i18n.t('Yesterday at {{LOCALIZED_TIME}}') -->
 								<!-- $i18n.t('{{LOCALIZED_DATE}} at {{LOCALIZED_TIME}}') -->
 
 								<span class="line-clamp-1"
-									>{$i18n.t(formatDate(message.timestamp * 1000), {
-										LOCALIZED_TIME: dayjs(message.timestamp * 1000).format('LT'),
-										LOCALIZED_DATE: dayjs(message.timestamp * 1000).format('L')
-									})}</span
-								>
-							</Tooltip>
-						</div>
+                                                                        >{$i18n.t(formatDate(message.timestamp * 1000), {
+                                                                                LOCALIZED_TIME: dayjs(message.timestamp * 1000).format('LTS'),
+                                                                                LOCALIZED_DATE: dayjs(message.timestamp * 1000).format('L')
+                                                                        })}</span
+                                                                >
+                                                        </Tooltip>
+                                                </div>
 					{/if}
 				</Name>
 			</div>
@@ -176,15 +178,17 @@
 						? 'dark:text-gray-100 text-gray-900'
 						: 'invisible group-hover:visible transition text-gray-400'}"
 				>
-					<Tooltip content={dayjs(message.timestamp * 1000).format('LLLL')}>
-						<span class="line-clamp-1"
-							>{$i18n.t(formatDate(message.timestamp * 1000), {
-								LOCALIZED_TIME: dayjs(message.timestamp * 1000).format('LT'),
-								LOCALIZED_DATE: dayjs(message.timestamp * 1000).format('L')
-							})}</span
-						>
-					</Tooltip>
-				</div>
+                                        <Tooltip
+                                                content={dayjs(message.timestamp * 1000).format('LL dddd LTS')}
+                                        >
+                                                <span class="line-clamp-1"
+                                                        >{$i18n.t(formatDate(message.timestamp * 1000), {
+                                                                LOCALIZED_TIME: dayjs(message.timestamp * 1000).format('LTS'),
+                                                                LOCALIZED_DATE: dayjs(message.timestamp * 1000).format('L')
+                                                        })}</span
+                                                >
+                                        </Tooltip>
+                                </div>
 			</div>
 		{/if}
 

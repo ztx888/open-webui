@@ -11,9 +11,9 @@
 
 	const dispatch = createEventDispatcher();
 
-	import { createNewFeedback, getFeedbackById, updateFeedbackById } from '$lib/apis/evaluations';
-	import { getChatById } from '$lib/apis/chats';
-	import { generateTags } from '$lib/apis';
+        import { createNewFeedback, getFeedbackById, updateFeedbackById } from '$lib/apis/evaluations';
+        import { getChatById } from '$lib/apis/chats';
+        import { generateTags } from '$lib/apis';
 
 	import {
 		audioQueue,
@@ -27,15 +27,14 @@
 	import { synthesizeOpenAISpeech } from '$lib/apis/audio';
 	import { imageGenerations } from '$lib/apis/images';
 	import {
-		copyToClipboard as _copyToClipboard,
-		approximateToHumanReadable,
-		getMessageContentParts,
-		sanitizeResponseContent,
-		createMessagesList,
-		formatDate,
-		removeDetails,
-		removeAllDetails
-	} from '$lib/utils';
+                copyToClipboard as _copyToClipboard,
+                approximateToHumanReadable,
+                getMessageContentParts,
+                createMessagesList,
+                formatDate,
+                removeDetails,
+                removeAllDetails
+        } from '$lib/utils';
 	import { WEBUI_BASE_URL } from '$lib/constants';
 
 	import Name from './Name.svelte';
@@ -60,8 +59,38 @@
 	import { fade } from 'svelte/transition';
 	import { flyAndScale } from '$lib/utils/transitions';
 	import RegenerateMenu from './ResponseMessage/RegenerateMenu.svelte';
-	import StatusHistory from './ResponseMessage/StatusHistory.svelte';
-	import FullHeightIframe from '$lib/components/common/FullHeightIframe.svelte';
+        import StatusHistory from './ResponseMessage/StatusHistory.svelte';
+        import FullHeightIframe from '$lib/components/common/FullHeightIframe.svelte';
+
+        const formatUsageTooltip = (usage) => {
+                if (!usage) return '';
+
+                const promptTokens = usage?.prompt_tokens ?? 0;
+                const completionTokens = usage?.completion_tokens ?? 0;
+                const reasoningTokens = usage?.completion_tokens_details?.reasoning_tokens;
+                const totalTokens =
+                        usage?.total_tokens ?? promptTokens + completionTokens + (reasoningTokens ?? 0);
+
+                const lines = [
+                        `输入 Tokens: ${promptTokens}`,
+                        `输出 Tokens: ${completionTokens}`,
+                        ...(reasoningTokens !== undefined && reasoningTokens !== null
+                                ? [`推理 Tokens: ${reasoningTokens}`]
+                                : []),
+                        `总消耗 Tokens: ${totalTokens}`
+                ];
+
+                if (usage?.cost) {
+                        const toAmount = (value) => Number(value ?? 0).toFixed(6);
+                        lines.push(
+                                `费用合计: ¥${toAmount(usage.cost.total)} (输入: ¥${toAmount(usage.cost.input)}, 输出: ¥${toAmount(usage.cost.output)})`
+                        );
+                }
+
+                return `<div class="text-xs leading-5">${lines
+                        .map((line) => `<div>${line}</div>`)
+                        .join('')}</div>`;
+        };
 
 	interface MessageType {
 		id: string;
@@ -602,15 +631,17 @@
 							? 'dark:text-gray-100 text-gray-900'
 							: 'invisible group-hover:visible transition text-gray-400'}"
 					>
-						<Tooltip content={dayjs(message.timestamp * 1000).format('LLLL')}>
+                                                <Tooltip
+                                                        content={dayjs(message.timestamp * 1000).format('LL dddd LTS')}
+                                                >
 							<span class="line-clamp-1"
-								>{$i18n.t(formatDate(message.timestamp * 1000), {
-									LOCALIZED_TIME: dayjs(message.timestamp * 1000).format('LT'),
-									LOCALIZED_DATE: dayjs(message.timestamp * 1000).format('L')
-								})}</span
-							>
-						</Tooltip>
-					</div>
+                                                                >{$i18n.t(formatDate(message.timestamp * 1000), {
+                                                                        LOCALIZED_TIME: dayjs(message.timestamp * 1000).format('LTS'),
+                                                                        LOCALIZED_DATE: dayjs(message.timestamp * 1000).format('L')
+                                                                })}</span
+                                                        >
+                                                </Tooltip>
+                                        </div>
 				{/if}
 			</Name>
 
@@ -1107,21 +1138,11 @@
 									</Tooltip>
 								{/if}
 
-								{#if message.usage}
-									<Tooltip
-										content={message.usage
-											? `<pre>${sanitizeResponseContent(
-													JSON.stringify(message.usage, null, 2)
-														.replace(/"([^(")"]+)":/g, '$1:')
-														.slice(1, -1)
-														.split('\n')
-														.map((line) => line.slice(2))
-														.map((line) => (line.endsWith(',') ? line.slice(0, -1) : line))
-														.join('\n')
-												)}</pre>`
-											: ''}
-										placement="bottom"
-									>
+                                                                {#if message.usage}
+                                                                        <Tooltip
+                                                                                content={formatUsageTooltip(message.usage)}
+                                                                                placement="bottom"
+                                                                        >
 										<button
 											aria-hidden="true"
 											class=" {isLastMessage || ($settings?.highContrastMode ?? false)
