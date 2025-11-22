@@ -40,6 +40,7 @@
 		(url.includes('azure.') || url.includes('cognitive.microsoft.com')) && !direct ? true : false;
 
 	let prefixId = '';
+	let remark = '';
 	let enable = true;
 	let apiVersion = '';
 
@@ -179,6 +180,7 @@
 				enable: enable,
 				tags: tags,
 				prefix_id: prefixId,
+				remark: remark,
 				model_ids: modelIds,
 				connection_type: connectionType,
 				auth_type,
@@ -196,6 +198,7 @@
 		key = '';
 		auth_type = 'bearer';
 		prefixId = '';
+		remark = '';
 		tags = [];
 		modelIds = [];
 	};
@@ -213,6 +216,7 @@
 			enable = connection.config?.enable ?? true;
 			tags = connection.config?.tags ?? [];
 			prefixId = connection.config?.prefix_id ?? '';
+			remark = connection.config?.remark ?? '';
 			modelIds = connection.config?.model_ids ?? [];
 
 			if (ollama) {
@@ -466,6 +470,28 @@
 											autocomplete="off"
 										/>
 									</Tooltip>
+								</div>
+							</div>
+						</div>
+
+						<div class="flex gap-2 mt-2">
+							<div class="flex flex-col w-full">
+								<label
+									for="remark-input"
+									class={`mb-0.5 text-xs text-gray-500
+								${($settings?.highContrastMode ?? false) ? 'text-gray-800 dark:text-gray-100' : ''}`}
+									>{$i18n.t('Remark')}</label
+								>
+
+								<div class="flex-1">
+									<input
+										class={`w-full text-sm bg-transparent ${($settings?.highContrastMode ?? false) ? 'placeholder:text-gray-700 dark:placeholder:text-gray-100' : 'outline-hidden placeholder:text-gray-300 dark:placeholder:text-gray-700'}`}
+										type="text"
+										id="remark-input"
+										bind:value={remark}
+										placeholder={$i18n.t('Add a remark to identify this connection')}
+										autocomplete="off"
+									/>
 								</div>
 							</div>
 						</div>

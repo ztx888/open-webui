@@ -67,7 +67,7 @@
 				<input
 					class=" outline-hidden w-full bg-transparent {pipeline ? 'pr-8' : ''} cursor-pointer"
 					placeholder={$i18n.t('API Base URL')}
-					bind:value={url}
+					value={config?.remark ? config.remark : url}
 					autocomplete="off"
 					readonly={true}
 					on:click={() => {
