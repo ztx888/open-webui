@@ -618,7 +618,7 @@
 										type="number"
 										step="0.000001"
 										min="0"
-										class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
+										class="flex-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
 										bind:value={info.input_price_value}
 									/>
 									<select
@@ -641,7 +641,7 @@
 										type="number"
 										step="0.000001"
 										min="0"
-										class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
+										class="flex-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
 										bind:value={info.output_price_value}
 									/>
 									<select
