@@ -64,24 +64,24 @@
 
 	let system = '';
 	let info = {
-                id: '',
-                base_model_id: null,
-                name: '',
-                meta: {
-                        profile_image_url: `${WEBUI_BASE_URL}/static/favicon.png`,
-                        description: '',
-                        suggestion_prompts: null,
-                        tags: []
-                },
-                params: {
-                        system: ''
-                },
-                input_price_value: 0,
-                input_price_unit: 'M',
-                output_price_value: 0,
-                output_price_unit: 'M',
-                price_group_multiplier: 1
-        };
+		id: '',
+		base_model_id: null,
+		name: '',
+		meta: {
+			profile_image_url: `${WEBUI_BASE_URL}/static/favicon.png`,
+			description: '',
+			suggestion_prompts: null,
+			tags: []
+		},
+		params: {
+			system: ''
+		},
+		input_price_value: 0,
+		input_price_unit: 'M',
+		output_price_value: 0,
+		output_price_unit: 'M',
+		price_group_multiplier: 1
+	};
 
 	let params = {
 		system: ''
@@ -191,35 +191,35 @@
 			}
 		}
 
-                if (actionIds.length > 0) {
-                        info.meta.actionIds = actionIds;
-                } else {
-                        if (info.meta.actionIds) {
-                                delete info.meta.actionIds;
-                        }
-                }
+		if (actionIds.length > 0) {
+			info.meta.actionIds = actionIds;
+		} else {
+			if (info.meta.actionIds) {
+				delete info.meta.actionIds;
+			}
+		}
 
-                if (defaultFeatureIds.length > 0) {
-                        info.meta.defaultFeatureIds = defaultFeatureIds;
-                } else {
-                        if (info.meta.defaultFeatureIds) {
-                                delete info.meta.defaultFeatureIds;
-                        }
-                }
+		if (defaultFeatureIds.length > 0) {
+			info.meta.defaultFeatureIds = defaultFeatureIds;
+		} else {
+			if (info.meta.defaultFeatureIds) {
+				delete info.meta.defaultFeatureIds;
+			}
+		}
 
-                info.params.system = system.trim() === '' ? null : system;
-                info.params.stop = params.stop ? params.stop.split(',').filter((s) => s.trim()) : null;
-                Object.keys(info.params).forEach((key) => {
-                        if (info.params[key] === '' || info.params[key] === null) {
-                                delete info.params[key];
-                        }
-                });
+		info.params.system = system.trim() === '' ? null : system;
+		info.params.stop = params.stop ? params.stop.split(',').filter((s) => s.trim()) : null;
+		Object.keys(info.params).forEach((key) => {
+			if (info.params[key] === '' || info.params[key] === null) {
+				delete info.params[key];
+			}
+		});
 
-                info.input_price_value = Number(info.input_price_value ?? 0);
-                info.output_price_value = Number(info.output_price_value ?? 0);
-                info.price_group_multiplier = Number(info.price_group_multiplier ?? 1);
+		info.input_price_value = Number(info.input_price_value ?? 0);
+		info.output_price_value = Number(info.output_price_value ?? 0);
+		info.price_group_multiplier = Number(info.price_group_multiplier ?? 1);
 
-                await onSubmit(info);
+		await onSubmit(info);
 
 		loading = false;
 		success = false;
@@ -595,85 +595,85 @@
 						</div>
 					</div>
 
-                                        <div class="my-2">
-                                                <div class="px-4 py-3 bg-gray-50 dark:bg-gray-950 rounded-3xl">
-                                                        <AccessControl
-                                                                bind:accessControl
-                                                                accessRoles={['read', 'write']}
-                                                                allowPublic={$user?.permissions?.sharing?.public_models || $user?.role === 'admin'}
-                                                        />
-                                                </div>
-                                        </div>
+					<div class="my-2">
+						<div class="px-4 py-3 bg-gray-50 dark:bg-gray-950 rounded-3xl">
+							<AccessControl
+								bind:accessControl
+								accessRoles={['read', 'write']}
+								allowPublic={$user?.permissions?.sharing?.public_models || $user?.role === 'admin'}
+							/>
+						</div>
+					</div>
 
-                                        <div class="my-2">
-                                                <div class="flex w-full justify-between">
-                                                        <div class=" self-center text-sm font-semibold">计价设置</div>
-                                                </div>
+					<div class="my-2">
+						<div class="flex w-full justify-between">
+							<div class=" self-center text-sm font-semibold">计价设置</div>
+						</div>
 
-                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
-                                                        <div class="flex flex-col gap-1">
-                                                                <div class="text-xs font-semibold">输入单价</div>
-                                                                <div class="flex gap-2">
-                                                                        <input
-                                                                                type="number"
-                                                                                step="0.000001"
-                                                                                min="0"
-                                                                                class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
-                                                                                bind:value={info.input_price_value}
-                                                                        />
-                                                                        <select
-                                                                                class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2 py-2 text-sm"
-                                                                                bind:value={info.input_price_unit}
-                                                                        >
-                                                                                <option value="K">K</option>
-                                                                                <option value="M">M</option>
-                                                                        </select>
-                                                                </div>
-                                                                <p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
-                                                                        单位：人民币 / 每 1K 或 1M Tokens，请按 RMB 金额填写
-                                                                </p>
-                                                        </div>
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+							<div class="flex flex-col gap-1">
+								<div class="text-xs font-semibold">输入单价</div>
+								<div class="flex gap-2">
+									<input
+										type="number"
+										step="0.000001"
+										min="0"
+										class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
+										bind:value={info.input_price_value}
+									/>
+									<select
+										class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2 py-2 text-sm"
+										bind:value={info.input_price_unit}
+									>
+										<option value="K">K</option>
+										<option value="M">M</option>
+									</select>
+								</div>
+								<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
+									单位：人民币 / 每 1K 或 1M Tokens，请按 RMB 金额填写
+								</p>
+							</div>
 
-                                                        <div class="flex flex-col gap-1">
-                                                                <div class="text-xs font-semibold">输出单价</div>
-                                                                <div class="flex gap-2">
-                                                                        <input
-                                                                                type="number"
-                                                                                step="0.000001"
-                                                                                min="0"
-                                                                                class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
-                                                                                bind:value={info.output_price_value}
-                                                                        />
-                                                                        <select
-                                                                                class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2 py-2 text-sm"
-                                                                                bind:value={info.output_price_unit}
-                                                                        >
-                                                                                <option value="K">K</option>
-                                                                                <option value="M">M</option>
-                                                                        </select>
-                                                                </div>
-                                                                <p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
-                                                                        单位：人民币 / 每 1K 或 1M Tokens，请按 RMB 金额填写
-                                                                </p>
-                                                        </div>
+							<div class="flex flex-col gap-1">
+								<div class="text-xs font-semibold">输出单价</div>
+								<div class="flex gap-2">
+									<input
+										type="number"
+										step="0.000001"
+										min="0"
+										class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
+										bind:value={info.output_price_value}
+									/>
+									<select
+										class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2 py-2 text-sm"
+										bind:value={info.output_price_unit}
+									>
+										<option value="K">K</option>
+										<option value="M">M</option>
+									</select>
+								</div>
+								<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
+									单位：人民币 / 每 1K 或 1M Tokens，请按 RMB 金额填写
+								</p>
+							</div>
 
-                                                        <div class="flex flex-col gap-1 md:col-span-2">
-                                                                <div class="text-xs font-semibold">分组倍率</div>
-                                                                <input
-                                                                        type="number"
-                                                                        step="0.01"
-                                                                        min="0"
-                                                                        class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
-                                                                        bind:value={info.price_group_multiplier}
-                                                                />
-                                                                <p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
-                                                                        用于高倍率计价的站点调整，默认 1 表示不加成。
-                                                                </p>
-                                                        </div>
-                                                </div>
-                                        </div>
+							<div class="flex flex-col gap-1 md:col-span-2">
+								<div class="text-xs font-semibold">分组倍率</div>
+								<input
+									type="number"
+									step="0.01"
+									min="0"
+									class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
+									bind:value={info.price_group_multiplier}
+								/>
+								<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
+									用于高倍率计价的站点调整，默认 1 表示不加成。
+								</p>
+							</div>
+						</div>
+					</div>
 
-                                        <hr class=" border-gray-100 dark:border-gray-850 my-1.5" />
+					<hr class=" border-gray-100 dark:border-gray-850 my-1.5" />
 
 					<div class="my-2">
 						<div class="flex w-full justify-between">

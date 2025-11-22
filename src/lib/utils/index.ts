@@ -394,13 +394,13 @@ export const generateInitialsImage = (name) => {
 export const formatDate = (inputDate) => {
 	const date = dayjs(inputDate);
 
-        if (date.isToday()) {
-                return `Today at {{LOCALIZED_TIME}}`;
-        } else if (date.isYesterday()) {
-                return `Yesterday at {{LOCALIZED_TIME}}`;
-        } else {
-                return `{{LOCALIZED_DATE}} at {{LOCALIZED_TIME}}`;
-        }
+	if (date.isToday()) {
+		return `Today at {{LOCALIZED_TIME}}`;
+	} else if (date.isYesterday()) {
+		return `Yesterday at {{LOCALIZED_TIME}}`;
+	} else {
+		return `{{LOCALIZED_DATE}} at {{LOCALIZED_TIME}}`;
+	}
 };
 
 export const copyToClipboard = async (text, html = null, formatted = false) => {

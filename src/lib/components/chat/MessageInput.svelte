@@ -81,87 +81,88 @@
 	import Knobs from '../icons/Knobs.svelte';
 	import ValvesModal from '../workspace/common/ValvesModal.svelte';
 
-        const i18n = getContext('i18n');
+	const i18n = getContext('i18n');
 
-        const estimateTokenCount = (text: string): number => {
-                if (!text) {
-                        return 0;
-                }
+	const estimateTokenCount = (text: string): number => {
+		if (!text) {
+			return 0;
+		}
 
-                const hanRegex = /\p{Script=Han}/u;
-                const cjkPunctuationRegex = /[\u3000-\u303F]/u;
-                const fullWidthRegex = /[\uFF00-\uFFEF]/u;
-                const asciiLetterPunctuationRegex = /[\u0021-\u002F\u003A-\u0040\u0041-\u005A\u005B-\u0060\u0061-\u007A\u007B-\u007E]/;
-                const digitRegex = /[0-9]/;
-                const emojiRegex = /\p{Extended_Pictographic}/u;
+		const hanRegex = /\p{Script=Han}/u;
+		const cjkPunctuationRegex = /[\u3000-\u303F]/u;
+		const fullWidthRegex = /[\uFF00-\uFFEF]/u;
+		const asciiLetterPunctuationRegex =
+			/[\u0021-\u002F\u003A-\u0040\u0041-\u005A\u005B-\u0060\u0061-\u007A\u007B-\u007E]/;
+		const digitRegex = /[0-9]/;
+		const emojiRegex = /\p{Extended_Pictographic}/u;
 
-                let hanLikeCount = 0;
-                let asciiCount = 0;
-                let digitCount = 0;
-                let emojiCount = 0;
-                let otherCount = 0;
+		let hanLikeCount = 0;
+		let asciiCount = 0;
+		let digitCount = 0;
+		let emojiCount = 0;
+		let otherCount = 0;
 
-                for (const char of text) {
-                        if (hanRegex.test(char)) {
-                                hanLikeCount++;
-                                continue;
-                        }
+		for (const char of text) {
+			if (hanRegex.test(char)) {
+				hanLikeCount++;
+				continue;
+			}
 
-                        if (cjkPunctuationRegex.test(char)) {
-                                hanLikeCount++;
-                                continue;
-                        }
+			if (cjkPunctuationRegex.test(char)) {
+				hanLikeCount++;
+				continue;
+			}
 
-                        if (fullWidthRegex.test(char)) {
-                                hanLikeCount++;
-                                continue;
-                        }
+			if (fullWidthRegex.test(char)) {
+				hanLikeCount++;
+				continue;
+			}
 
-                        if (emojiRegex.test(char)) {
-                                emojiCount++;
-                                continue;
-                        }
+			if (emojiRegex.test(char)) {
+				emojiCount++;
+				continue;
+			}
 
-                        if (digitRegex.test(char)) {
-                                digitCount++;
-                                continue;
-                        }
+			if (digitRegex.test(char)) {
+				digitCount++;
+				continue;
+			}
 
-                        if (asciiLetterPunctuationRegex.test(char)) {
-                                asciiCount++;
-                                continue;
-                        }
+			if (asciiLetterPunctuationRegex.test(char)) {
+				asciiCount++;
+				continue;
+			}
 
-                        if (char.trim() === '') {
-                                continue;
-                        }
+			if (char.trim() === '') {
+				continue;
+			}
 
-                        otherCount++;
-                }
+			otherCount++;
+		}
 
-                const hanLikeTokens = hanLikeCount * 1.4;
-                const asciiTokens = asciiCount / 2;
-                const digitTokens = Math.ceil(digitCount / 3);
-                const emojiTokens = emojiCount * 2;
-                const otherTokens = otherCount;
+		const hanLikeTokens = hanLikeCount * 1.4;
+		const asciiTokens = asciiCount / 2;
+		const digitTokens = Math.ceil(digitCount / 3);
+		const emojiTokens = emojiCount * 2;
+		const otherTokens = otherCount;
 
-                return Math.round(hanLikeTokens + asciiTokens + digitTokens + emojiTokens + otherTokens);
-                const normalized = text
-                        // Remove common markdown characters that do not contribute to token count
-                        .replace(/[!\*`_>#+\-=|~<\[\]\(\)]/g, ' ')
-                        // Replace new lines with spaces for consistent splitting
-                        .replace(/\s+/g, ' ')
-                        .trim();
+		return Math.round(hanLikeTokens + asciiTokens + digitTokens + emojiTokens + otherTokens);
+		const normalized = text
+			// Remove common markdown characters that do not contribute to token count
+			.replace(/[!\*`_>#+\-=|~<\[\]\(\)]/g, ' ')
+			// Replace new lines with spaces for consistent splitting
+			.replace(/\s+/g, ' ')
+			.trim();
 
-                if (normalized.length === 0) {
-                        return 0;
-                }
+		if (normalized.length === 0) {
+			return 0;
+		}
 
-                const wordLikePieces = normalized.split(' ').filter(Boolean);
-                const charCount = normalized.length;
+		const wordLikePieces = normalized.split(' ').filter(Boolean);
+		const charCount = normalized.length;
 
-                return Math.max(wordLikePieces.length, Math.ceil(charCount / 4));
-        };
+		return Math.max(wordLikePieces.length, Math.ceil(charCount / 4));
+	};
 
 	export let onChange: Function = () => {};
 	export let createMessagePair: Function;
@@ -179,10 +180,10 @@
 	export let history;
 	export let taskIds = null;
 
-        export let prompt = '';
-        let estimatedTokenCount = 0;
+	export let prompt = '';
+	let estimatedTokenCount = 0;
 
-        $: estimatedTokenCount = estimateTokenCount(prompt);
+	$: estimatedTokenCount = estimateTokenCount(prompt);
 	export let files = [];
 
 	export let selectedToolIds = [];
@@ -1707,17 +1708,17 @@
 									</div>
 								</div>
 
-                                                                <div class="self-end flex space-x-1 mr-1 shrink-0">
-                                                                        <div
-                                                                                class="flex items-center px-2 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap"
-                                                                                aria-live="polite"
-                                                                        >
-                                                                                ≈ {estimatedTokenCount} token{estimatedTokenCount === 1 ? '' : 's'}
-                                                                        </div>
-                                                                        {#if (!history?.currentId || history.messages[history.currentId]?.done == true) && ($_user?.role === 'admin' || ($_user?.permissions?.chat?.stt ?? true))}
-                                                                                <!-- {$i18n.t('Record voice')} -->
-                                                                                <Tooltip content={$i18n.t('Dictate')}>
-                                                                                        <button
+								<div class="self-end flex space-x-1 mr-1 shrink-0">
+									<div
+										class="flex items-center px-2 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap"
+										aria-live="polite"
+									>
+										≈ {estimatedTokenCount} token{estimatedTokenCount === 1 ? '' : 's'}
+									</div>
+									{#if (!history?.currentId || history.messages[history.currentId]?.done == true) && ($_user?.role === 'admin' || ($_user?.permissions?.chat?.stt ?? true))}
+										<!-- {$i18n.t('Record voice')} -->
+										<Tooltip content={$i18n.t('Dictate')}>
+											<button
 												id="voice-input-button"
 												class=" text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 transition rounded-full p-1.5 mr-0.5 self-center"
 												type="button"
