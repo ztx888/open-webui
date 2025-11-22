@@ -101,12 +101,12 @@
 		code_interpreter: true,
 		citations: true,
 		status_updates: true,
-		usage: undefined
+		usage: true
 	};
 	let defaultFeatureIds = [];
 
 	let actionIds = [];
-	let accessControl = {};
+	let accessControl = null;
 
 	const addUsage = (base_model_id) => {
 		const baseModel = $models.find((m) => m.id === base_model_id);
@@ -297,7 +297,7 @@
 			if ('access_control' in model) {
 				accessControl = model.access_control;
 			} else {
-				accessControl = {};
+				accessControl = null;
 			}
 
 			console.log(model?.access_control);
@@ -618,16 +618,18 @@
 										type="number"
 										step="0.000001"
 										min="0"
-										class="flex-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
+										class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
 										bind:value={info.input_price_value}
 									/>
-									<select
-										class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2 py-2 text-sm"
-										bind:value={info.input_price_unit}
+									<button
+										class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2.5 py-2 text-sm min-w-fit transition"
+										type="button"
+										on:click={() => {
+											info.input_price_unit = (info.input_price_unit ?? 'K') === 'K' ? 'M' : 'K';
+										}}
 									>
-										<option value="K">K</option>
-										<option value="M">M</option>
-									</select>
+										{info.input_price_unit ?? 'K'}
+									</button>
 								</div>
 								<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
 									单位：人民币 / 每 1K 或 1M Tokens，请按 RMB 金额填写
@@ -641,16 +643,18 @@
 										type="number"
 										step="0.000001"
 										min="0"
-										class="flex-1 rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
+										class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
 										bind:value={info.output_price_value}
 									/>
-									<select
-										class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2 py-2 text-sm"
-										bind:value={info.output_price_unit}
+									<button
+										class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2.5 py-2 text-sm min-w-fit transition"
+										type="button"
+										on:click={() => {
+											info.output_price_unit = (info.output_price_unit ?? 'K') === 'K' ? 'M' : 'K';
+										}}
 									>
-										<option value="K">K</option>
-										<option value="M">M</option>
-									</select>
+										{info.output_price_unit ?? 'K'}
+									</button>
 								</div>
 								<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
 									单位：人民币 / 每 1K 或 1M Tokens，请按 RMB 金额填写
