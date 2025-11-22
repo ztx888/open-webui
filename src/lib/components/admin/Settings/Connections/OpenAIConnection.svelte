@@ -65,11 +65,14 @@
 		<div class="flex w-full gap-2">
 			<div class="flex-1 relative">
 				<input
-					class=" outline-hidden w-full bg-transparent {pipeline ? 'pr-8' : ''}"
+					class=" outline-hidden w-full bg-transparent {pipeline ? 'pr-8' : ''} cursor-pointer"
 					placeholder={$i18n.t('API Base URL')}
 					bind:value={url}
 					autocomplete="off"
 					readonly={true}
+					on:click={() => {
+						showConfigModal = true;
+					}}
 				/>
 
 				{#if pipeline}
