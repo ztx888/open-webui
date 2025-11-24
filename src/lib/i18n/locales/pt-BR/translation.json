@@ -1283,12 +1283,7 @@
 	"Prefer not to say": "Prefiro não dizer",
 	"Prefix ID": "Prefixo ID",
 	"Prefix ID is used to avoid conflicts with other connections by adding a prefix to the model IDs - leave empty to disable": "O ID de prefixo é utilizado para evitar conflitos com outras conexões, adicionando um prefixo aos IDs dos modelos - deixe em branco para desativar.",
-<<<<<<< HEAD
-	"presence_penalty": "",
-	"Prevent File Creation": "",
-=======
 	"Prevent File Creation": "Impedir a criação de arquivos",
->>>>>>> upstream/main
 	"Preview": "Visualização",
 	"Previous 30 days": "Últimos 30 dias",
 	"Previous 7 days": "Últimos 7 dias",

@@ -778,12 +778,7 @@
 	"Force OCR on all pages of the PDF. This can lead to worse results if you have good text in your PDFs. Defaults to False.": "Tvinga OCR på alla sidor i PDF:en. Detta kan leda till sämre resultat om du har bra text i dina PDF:er. Standardvärdet är False.",
 	"Forge new paths": "Skapa nya vägar",
 	"Form": "Formulär",
-<<<<<<< HEAD
-	"format": "",
-	"Format Lines": "",
-=======
 	"Format Lines": "Formatera rader",
->>>>>>> upstream/main
 	"Format the lines in the output. Defaults to False. If set to True, the lines will be formatted to detect inline math and styles.": "",
 	"Format your variables using brackets like this:": "Du kan använda variabler med hakparenteser så här:",
 	"Formatting may be inconsistent from source.": "Formatering kan skilja sig från källfilen",
@@ -1284,16 +1279,9 @@
 	"Please wait until all files are uploaded.": "Vänta tills alla filer har laddats upp.",
 	"Port": "Port",
 	"Positive attitude": "Positivt inställning",
-<<<<<<< HEAD
-	"Prefer not to say": "",
-	"Prefix ID": "Prefix ID",
-	"Prefix ID is used to avoid conflicts with other connections by adding a prefix to the model IDs - leave empty to disable": "Prefix ID används för att undvika konflikter med andra anslutningar genom att lägga till ett prefix till modell-ID:n - lämna tomt för att inaktivera",
-	"presence_penalty": "",
-=======
 	"Prefer not to say": "Föredrar att inte att säga",
 	"Prefix ID": "Prefix-ID",
 	"Prefix ID is used to avoid conflicts with other connections by adding a prefix to the model IDs - leave empty to disable": "Prefix-ID används för att undvika konflikter med andra anslutningar genom att lägga till ett prefix till modell-ID:n - lämna tomt för att inaktivera",
->>>>>>> upstream/main
 	"Prevent File Creation": "",
 	"Preview": "Förhandsgranska",
 	"Previous 30 days": "Föregående 30 dagar",
@@ -1360,13 +1348,7 @@
 	"Remove this tag from list": "Ta bort denna tagg från listan",
 	"Rename": "Byt namn",
 	"Reorder Models": "Omordna modeller",
-<<<<<<< HEAD
-	"repeat_last_n": "",
-	"repeat_penalty": "",
-	"Reply": "",
-=======
 	"Reply": "Svara",
->>>>>>> upstream/main
 	"Reply in Thread": "Svara i tråd",
 	"Reply to thread...": "Svara i tråd...",
 	"Replying to {{NAME}}": "Svarar {{NAME}}",

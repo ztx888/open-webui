@@ -1040,14 +1040,7 @@
 	"Microsoft OneDrive (work/school)": "Microsoft OneDrive (회사/학교용)",
 	"min_p": "",
 	"MinerU": "",
-<<<<<<< HEAD
-	"MinerU API Key required for Cloud API mode.": "",
-	"mirostat": "",
-	"mirostat_eta": "",
-	"mirostat_tau": "",
-=======
 	"MinerU API Key required for Cloud API mode.": "클라우드 API 모드를 사용하려면 MinerU API 키가 필요합니다.",
->>>>>>> upstream/main
 	"Mistral OCR": "",
 	"Mistral OCR API Key required.": "Mistral OCR API Key가 필요합니다.",
 	"MistralAI": "",
@@ -1287,12 +1280,7 @@
 	"Prefer not to say": "언급하고 싶지 않습니다.",
 	"Prefix ID": "Prefix ID",
 	"Prefix ID is used to avoid conflicts with other connections by adding a prefix to the model IDs - leave empty to disable": "Prefix ID는 모델 ID에 접두사를 추가하여 다른 연결과의 충돌을 방지하는 데 사용됩니다. - 비활성화하려면 비워 둡니다.",
-<<<<<<< HEAD
-	"presence_penalty": "",
-	"Prevent File Creation": "",
-=======
 	"Prevent File Creation": "파일 생성 방지",
->>>>>>> upstream/main
 	"Preview": "미리보기",
 	"Previous 30 days": "이전 30일",
 	"Previous 7 days": "이전 7일",

@@ -1283,12 +1283,7 @@
 	"Prefer not to say": "不想透露",
 	"Prefix ID": "前置 ID",
 	"Prefix ID is used to avoid conflicts with other connections by adding a prefix to the model IDs - leave empty to disable": "前置 ID 用於透過為模型 ID 新增字首以避免與其他連線衝突 - 留空以停用",
-<<<<<<< HEAD
-	"presence_penalty": "",
-	"Prevent File Creation": "",
-=======
 	"Prevent File Creation": "阻止文件創建",
->>>>>>> upstream/main
 	"Preview": "預覽",
 	"Previous 30 days": "過去 30 天",
 	"Previous 7 days": "過去 7 天",

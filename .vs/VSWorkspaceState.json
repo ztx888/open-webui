@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\open_webui",
+    "\\backend\\open_webui\\migrations",
+    "\\backend\\open_webui\\migrations\\versions",
+    "\\src\\lib",
+    "\\src\\lib\\i18n\\locales",
+    "\\src\\lib\\i18n\\locales\\uz-Cyrl-UZ",
+    "\\src\\lib\\i18n\\locales\\uz-Latn-Uz",
+    "\\src\\lib\\i18n\\locales\\vi-VN"
+  ],
+  "SelectedNode": "\\backend\\open_webui\\migrations\\versions\\eddd1a9322ad_add_model_pricing_fields.py",
+  "PreviewInSolutionExplorer": false
+}

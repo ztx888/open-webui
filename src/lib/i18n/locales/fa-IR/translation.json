@@ -778,14 +778,8 @@
 	"Force OCR on all pages of the PDF. This can lead to worse results if you have good text in your PDFs. Defaults to False.": "اجبار به OCR در تمام صفحات PDF. این ممکن است در صورت داشتن متن خوب در PDFها منجر به نتایج بدتری شود. پیش\u200cفرض: False.",
 	"Forge new paths": "مسیرهای جدید بسازید",
 	"Form": "فرم",
-<<<<<<< HEAD
-	"format": "",
-	"Format Lines": "",
-	"Format the lines in the output. Defaults to False. If set to True, the lines will be formatted to detect inline math and styles.": "",
-=======
 	"Format Lines": "قالب\u200cبندی خطوط",
 	"Format the lines in the output. Defaults to False. If set to True, the lines will be formatted to detect inline math and styles.": "قالب\u200cبندی خطوط در خروجی. پیش\u200cفرض: False. اگر روی True تنظیم شود، خطوط برای تشخیص ریاضیات و استایل\u200cهای درون\u200cخطی قالب\u200cبندی خواهند شد.",
->>>>>>> upstream/main
 	"Format your variables using brackets like this:": "متغیرهای خود را با استفاده از براکت به این شکل قالب\u200cبندی کنید:",
 	"Formatting may be inconsistent from source.": "قالب\u200cبندی ممکن است با منبع ناسازگار باشد.",
 	"Forwards system user OAuth access token to authenticate": "ارسال توکن دسترسی OAuth کاربر سیستم برای احراز هویت",
@@ -941,14 +935,8 @@
 	"JWT Expiration": "JWT انقضای",
 	"JWT Token": "JWT توکن",
 	"Kagi Search API Key": "کلید API جستجوی کاگی",
-<<<<<<< HEAD
-	"Keep Follow-Up Prompts in Chat": "",
-	"Keep in Sidebar": "",
-	"keep_alive": "",
-=======
 	"Keep Follow-Up Prompts in Chat": "نگه داشتن پرامپت\u200cهای پیگیری در چت",
 	"Keep in Sidebar": "نگه داشتن در نوار کناری",
->>>>>>> upstream/main
 	"Key": "کلید",
 	"Key is required": "کلید مورد نیاز است",
 	"Keyboard shortcuts": "میانبرهای صفحه کلید",
@@ -1045,23 +1033,11 @@
 	"Message": "پیام",
 	"Message rating should be enabled to use this feature": "برای استفاده از این ویژگی باید امتیازدهی پیام\u200cها فعال باشد",
 	"Messages you send after creating your link won't be shared. Users with the URL will be able to view the shared chat.": "پیام های شما بعد از ایجاد لینک شما به اشتراک نمی گردد. کاربران با لینک URL می توانند چت اشتراک را مشاهده کنند.",
-<<<<<<< HEAD
-	"Microsoft OneDrive": "",
-	"Microsoft OneDrive (personal)": "",
-	"Microsoft OneDrive (work/school)": "",
-	"min_p": "",
-	"MinerU": "",
-	"MinerU API Key required for Cloud API mode.": "",
-	"mirostat": "",
-	"mirostat_eta": "",
-	"mirostat_tau": "",
-=======
 	"Microsoft OneDrive": "وان\u200cدرایو مایکروسافت",
 	"Microsoft OneDrive (personal)": "وان\u200cدرایو مایکروسافت (شخصی)",
 	"Microsoft OneDrive (work/school)": "وان\u200cدرایو مایکروسافت (کار/مدرسه)",
 	"MinerU": "MinerU",
 	"MinerU API Key required for Cloud API mode.": "کلید API MinerU برای حالت Cloud API مورد نیاز است.",
->>>>>>> upstream/main
 	"Mistral OCR": "تشخیص متن میسترال",
 	"Mistral OCR API Key required.": "کلید API تشخیص متن میسترال مورد نیاز است.",
 	"MistralAI": "MistralAI",
@@ -1171,18 +1147,8 @@
 	"Notification Webhook": "وب\u200cهوک اعلان",
 	"Notifications": "اعلان",
 	"November": "نوامبر",
-<<<<<<< HEAD
-	"num_batch": "",
-	"num_ctx": "",
-	"num_gpu": "",
-	"num_keep": "",
-	"num_thread": "",
-	"OAuth": "",
-	"OAuth 2.1": "",
-=======
 	"OAuth": "OAuth",
 	"OAuth 2.1": "OAuth 2.1",
->>>>>>> upstream/main
 	"OAuth ID": "شناسه OAuth",
 	"October": "اکتبر",
 	"Off": "خاموش",
@@ -1306,14 +1272,8 @@
 	"Prefer not to say": "ترجیح می\u200cدهم نگویم",
 	"Prefix ID": "شناسه پیشوند",
 	"Prefix ID is used to avoid conflicts with other connections by adding a prefix to the model IDs - leave empty to disable": "شناسه پیشوند برای جلوگیری از تداخل با سایر اتصالات با افزودن پیشوند به شناسه\u200cهای مدل استفاده می\u200cشود - برای غیرفعال کردن خالی بگذارید",
-<<<<<<< HEAD
-	"presence_penalty": "",
-	"Prevent File Creation": "",
-	"Preview": "",
-=======
 	"Prevent File Creation": "جلوگیری از ایجاد فایل",
 	"Preview": "پیش\u200cنمایش",
->>>>>>> upstream/main
 	"Previous 30 days": "30 روز قبل",
 	"Previous 7 days": "7 روز قبل",
 	"Previous message": "پیام قبلی",
@@ -1378,13 +1338,7 @@
 	"Remove this tag from list": "حذف این تگ از لیست",
 	"Rename": "تغییر نام",
 	"Reorder Models": "ترتیب مجدد مدل\u200cها",
-<<<<<<< HEAD
-	"repeat_last_n": "",
-	"repeat_penalty": "",
-	"Reply": "",
-=======
 	"Reply": "پاسخ",
->>>>>>> upstream/main
 	"Reply in Thread": "پاسخ در رشته",
 	"Reply to thread...": "پاسخ به رشته...",
 	"Replying to {{NAME}}": "در حال پاسخ به {{NAME}}",

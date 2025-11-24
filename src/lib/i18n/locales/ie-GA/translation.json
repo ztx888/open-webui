@@ -1038,17 +1038,8 @@
 	"Microsoft OneDrive": "Microsoft OneDrive",
 	"Microsoft OneDrive (personal)": "Microsoft OneDrive (pearsanta)",
 	"Microsoft OneDrive (work/school)": "Microsoft OneDrive (obair/scoil)",
-<<<<<<< HEAD
-	"min_p": "",
-	"MinerU": "",
-	"MinerU API Key required for Cloud API mode.": "",
-	"mirostat": "",
-	"mirostat_eta": "",
-	"mirostat_tau": "",
-=======
 	"MinerU": "MinerU",
 	"MinerU API Key required for Cloud API mode.": "Eochair API MinerU ag teastáil le haghaidh mód Cloud API.",
->>>>>>> upstream/main
 	"Mistral OCR": "OCR Mistral",
 	"Mistral OCR API Key required.": "Mistral OCR API Eochair ag teastáil.",
 	"MistralAI": "MistralAI",
@@ -1288,12 +1279,7 @@
 	"Prefer not to say": "Is fearr liom gan a rá",
 	"Prefix ID": "Aitheantas Réimír",
 	"Prefix ID is used to avoid conflicts with other connections by adding a prefix to the model IDs - leave empty to disable": "Úsáidtear Aitheantas Réimír chun coinbhleachtaí le naisc eile a sheachaint trí réimír a chur le haitheantas na samhla - fág folamh le díchumasú",
-<<<<<<< HEAD
-	"presence_penalty": "",
-	"Prevent File Creation": "",
-=======
 	"Prevent File Creation": "Cosc a chur ar Chruthú Comhad",
->>>>>>> upstream/main
 	"Preview": "Réamhamharc",
 	"Previous 30 days": "30 lá roimhe seo",
 	"Previous 7 days": "7 lá roimhe seo",
@@ -1359,13 +1345,7 @@
 	"Remove this tag from list": "Bain an clib seo den liosta",
 	"Rename": "Athainmnigh",
 	"Reorder Models": "Athordú na Samhlacha",
-<<<<<<< HEAD
-	"repeat_last_n": "",
-	"repeat_penalty": "",
-	"Reply": "",
-=======
 	"Reply": "Freagra",
->>>>>>> upstream/main
 	"Reply in Thread": "Freagra i Snáithe",
 	"Reply to thread...": "Freagra ar an snáithe...",
 	"Replying to {{NAME}}": "Ag freagairt do {{NAME}}",

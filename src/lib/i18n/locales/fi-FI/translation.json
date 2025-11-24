@@ -1038,17 +1038,8 @@
 	"Microsoft OneDrive": "",
 	"Microsoft OneDrive (personal)": "",
 	"Microsoft OneDrive (work/school)": "",
-<<<<<<< HEAD
-	"min_p": "",
-	"MinerU": "",
-	"MinerU API Key required for Cloud API mode.": "",
-	"mirostat": "",
-	"mirostat_eta": "",
-	"mirostat_tau": "",
-=======
 	"MinerU": "MinerU",
 	"MinerU API Key required for Cloud API mode.": "MinerU API-avain vaaditaan pilvi API:ssa",
->>>>>>> upstream/main
 	"Mistral OCR": "Mistral OCR",
 	"Mistral OCR API Key required.": "Mistral OCR api-avain vaaditaan",
 	"MistralAI": "MistralAI",

@@ -778,14 +778,8 @@
 	"Force OCR on all pages of the PDF. This can lead to worse results if you have good text in your PDFs. Defaults to False.": "Gennemtving OCR på alle sider af PDF'en. Dette kan føre til dårligere resultater hvis du har gode tekst i dine PDF'er. Standard er False.",
 	"Forge new paths": "Dan nye veje",
 	"Form": "Formular",
-<<<<<<< HEAD
-	"format": "",
-	"Format Lines": "",
-	"Format the lines in the output. Defaults to False. If set to True, the lines will be formatted to detect inline math and styles.": "",
-=======
 	"Format Lines": "Formatér linjer",
 	"Format the lines in the output. Defaults to False. If set to True, the lines will be formatted to detect inline math and styles.": "Formatér linjerne i outputtet. Standardværdi er False. Hvis denne er sat til True vil linjerne blive formateret til at opdage inline matematik og styling.",
->>>>>>> upstream/main
 	"Format your variables using brackets like this:": "Formater dine variable ved hjælp af klammer som dette:",
 	"Formatting may be inconsistent from source.": "Formattering kan være inkonsekvent fra kilden.",
 	"Forwards system user OAuth access token to authenticate": "Videresender system bruger OAuth access token til autentificering",
@@ -1043,17 +1037,8 @@
 	"Microsoft OneDrive": "Microsoft OneDrive",
 	"Microsoft OneDrive (personal)": "Microsoft OneDrive (personlig)",
 	"Microsoft OneDrive (work/school)": "Microsoft OneDrive (arbejde/skole)",
-<<<<<<< HEAD
-	"min_p": "",
-	"MinerU": "",
-	"MinerU API Key required for Cloud API mode.": "",
-	"mirostat": "",
-	"mirostat_eta": "",
-	"mirostat_tau": "",
-=======
 	"MinerU": "MinerU",
 	"MinerU API Key required for Cloud API mode.": "MinerU API nøgle påkrævet for Cloud API tilstand.",
->>>>>>> upstream/main
 	"Mistral OCR": "Mistral OCR",
 	"Mistral OCR API Key required.": "Mistral OCR API nøgle påkrævet.",
 	"MistralAI": "MistralAI",
@@ -1163,18 +1148,8 @@
 	"Notification Webhook": "Notifikations webhook",
 	"Notifications": "Notifikationer",
 	"November": "November",
-<<<<<<< HEAD
-	"num_batch": "",
-	"num_ctx": "",
-	"num_gpu": "",
-	"num_keep": "",
-	"num_thread": "",
-	"OAuth": "",
-	"OAuth 2.1": "",
-=======
 	"OAuth": "OAuth",
 	"OAuth 2.1": "OAuth 2.1",
->>>>>>> upstream/main
 	"OAuth ID": "OAuth-ID",
 	"October": "Oktober",
 	"Off": "Fra",
@@ -1298,12 +1273,7 @@
 	"Prefer not to say": "Foretrækker ikke at oplyse",
 	"Prefix ID": "Prefix ID",
 	"Prefix ID is used to avoid conflicts with other connections by adding a prefix to the model IDs - leave empty to disable": "Prefix ID bruges til at undgå konflikter med andre forbindelser ved at tilføje et prefix til model-ID'erne - lad være tom for at deaktivere",
-<<<<<<< HEAD
-	"presence_penalty": "",
-	"Prevent File Creation": "",
-=======
 	"Prevent File Creation": "Forhindr filoprettelse",
->>>>>>> upstream/main
 	"Preview": "Forhåndsvisning",
 	"Previous 30 days": "Seneste 30 dage",
 	"Previous 7 days": "Seneste 7 dage",
@@ -1369,13 +1339,7 @@
 	"Remove this tag from list": "Fjern dette tag fra listen",
 	"Rename": "Omdøb",
 	"Reorder Models": "Omarranger modeller",
-<<<<<<< HEAD
-	"repeat_last_n": "",
-	"repeat_penalty": "",
-	"Reply": "",
-=======
 	"Reply": "Svar",
->>>>>>> upstream/main
 	"Reply in Thread": "Svar i tråd",
 	"Reply to thread...": "Svar på tråd...",
 	"Replying to {{NAME}}": "Svarer {{NAME}}",
