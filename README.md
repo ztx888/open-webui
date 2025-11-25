@@ -1,32 +1,74 @@
-## 🔧 本仓库的自定义增强说明
+# OpenWebUI - 功能增强版 (Enhanced Edition)
 
-> 基于官方 Open WebUI 进行二次开发，主要针对「中文使用体验」和「模型计费 / 用量统计」做了优化，适合在绿联 NAS 等自建环境中使用。
+![OpenWebUI Logo](https://github.com/open-webui/open-webui/blob/main/docs/static/favicon.png?raw=true)
 
-### 1. 中文界面汉化与体验优化
+> **基于官方 OpenWebUI 二次开发，深度汉化细节体验。**
+> 本版本同步至官方最新，在保留原版所有功能的前提下，补充了官方没做的汉化细节，并新增了按次计费、模型快捷入口、Token 预估等实用功能，使用更顺手。
 
-- 核心界面中文化：
-  - 对话页面侧边栏、模型管理页、系统设置页等常用界面改为中文文案
-  - 模型列表、模型分组、预设提示、用量统计等字段统一为中文，尽量避免机翻感
-- 文案与交互细节优化：
-  - 按钮和菜单命名调整为更符合国内使用习惯的说法（如「新建会话」「保存配置」等）
-  - 常见错误提示、状态提示改为中文，方便排查问题与日常使用
-- 时间显示增强：
-  - 聊天消息时间戳支持精确到「秒」，便于查看请求耗时、对比不同模型的响应速度
+---
 
-### 2. 模型计费配置与用量费用展示扩展
+## ✨ 独家功能 (Features)
 
-- 为模型新增按模型计费字段：
-  - `input_price_value` / `input_price_unit`：输入 Tokens 单价（支持 K / M 单位）
-  - `output_price_value` / `output_price_unit`：输出 Tokens 单价（支持 K / M 单位）
-  - `price_group_multiplier`：价格倍率，用于兼容部分第三方 API 站点的分组计价策略
-- 后端统一计算用量与费用：
-  - 精确统计 `prompt_tokens`、`completion_tokens`、`reasoning_tokens` 和 `total_tokens`
-  - 在接口返回中新增 `usage.cost` 字段，包含：
-    - `currency`：目前主要按 CNY 计算
-    - `input` / `output` / `total` 三项费用明细
-- 前端用量展示本地化与增强：
-  - 用量悬浮提示改为中文：**输入 Tokens / 输出 Tokens / 推理 Tokens / 总消耗 Tokens**
-  - 在每条消息下方展示本次调用的费用明细（支持流式与非流式响应）
-  - 方便对接第三方 API 站点，实时查看不同模型的真实调用成本
+### 🛠️ 1. 深度 UI/UX 体验优化 (用的更顺手)
 
-> 目标：在自建 Open WebUI 中，既有更友好的中文界面，又能精确按照第三方站点的 Token 单价与倍率计算和展示调用成本。
+#### ⚡ 快捷入口与 Token 预估
+- **模型设置直达**：在首页模型下拉框中，新增了**【模型设置】**跳转按钮。想改参数不用去后台翻半天，点一下直接达。
+- **输入框 Token 预估**：输入框右下角新增 **Token 预估** (≈ 0 tokens)，发送前心里有数，不再盲目消耗。
+
+<img width="650" height="463" alt="PixPin_2025-11-25_20-28-43" src="https://github.com/user-attachments/assets/6dead822-da02-4d22-9d6e-6b652eefd7b9" />
+
+
+#### 🔗 外部连接管理增强 (治好强迫症)
+- **备注功能**：给一堆 key 加上备注（如 "主力号", "备用", "DeepSeek"），一眼分辨，不再瞎猜。
+- **点击跳转**：点击名称直接编辑，操作逻辑更符合直觉。
+
+<img width="487" height="313" alt="PixPin_2025-11-25_20-29-34" src="https://github.com/user-attachments/assets/6dbdfef7-ec1d-40e3-856c-158f2d2bc8d8" />
+
+
+#### 🧠 高级设置人性化
+- **思考等级 (Reasoning Effort) 下拉框**：针对 o1/Claude 等推理模型，把手动输参数改成了标准的**下拉选择** (Low/Medium/High)，简单直接。
+- **全汉化界面**：把高级设置里的温度、惩罚系数等参数说明全部汉化。
+<img width="390" height="1077" alt="image" src="https://github.com/user-attachments/assets/6ec4aaae-2f75-4526-a84e-dda8618164f5" />
+<img width="390" height="507" alt="image" src="https://github.com/user-attachments/assets/7c29cbb6-69b3-4143-8fef-eae18be24966" />
+
+---
+
+### 💰 2. 更灵活的计费模式
+在基础上加了三种模式，方便分享给朋友或小圈子使用时管理成本。
+
+| 模式 | 描述 |
+| :--- | :--- |
+| **按量计费 (Per Token)** | 官方原生逻辑，算得细，用多少扣多少。 |
+| **按次计费 (Per Request)** |：简单粗暴，聊一次扣一次钱（比如 0.1元/次），不用算 Token 账。 |
+| **免费模式 (Free)** | ：设置为免费的模型，前端会直接提示“免费”，不扣余额。 |
+<img width="1630" height="321" alt="PixPin_2025-11-25_20-34-00" src="https://github.com/user-attachments/assets/38294f08-978f-4659-a321-d06e3e76ab18" />
+
+> **费用统计汉化**：重写了对话框底部的黑色浮窗，完全汉化，并能根据计费模式显示如 `¥0.05 (按次计费)`。
+<img width="528" height="202" alt="PixPin_2025-11-25_20-31-50" src="https://github.com/user-attachments/assets/983cc367-1561-47fe-a5f2-f8f980fe1579" />
+<img width="252" height="158" alt="PixPin_2025-11-25_20-32-37" src="https://github.com/user-attachments/assets/eebbad79-c0e0-4109-a5a1-953c44cd5b48" />
+
+---
+
+### 🛡️ 3. 稳定性与构建修复
+- **数据库防崩**：修复了官方更新可能导致的数据库“重复列”报错，加了自动检查脚本，Docker 重启更稳。
+- **跨平台构建**：修复了 Windows 本地开发环境导致的 Linux 构建失败问题
+
+---
+
+## 🚀 部署方法
+
+和官方原版完全一致，可用 Docker Compose 启动。
+
+```yaml
+version: '3.8'
+services:
+  open-webui:
+    image: ghcr.io/ztx888/openwebui:latest
+    volumes:
+      - ./data:/app/backend/data
+    ports:
+      - 3000:8080
+    restart: always
+
+🙏 致谢
+感谢 [OpenWebUI](https://github.com/open-webui/open-webui) 的官方项目！致以崇高的敬意！
