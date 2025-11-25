@@ -623,16 +623,27 @@
 									class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
 									bind:value={info.billing_type}
 								>
+									<option value="free">免费</option>
 									<option value="per_token">按量计费（按 Token）</option>
 									<option value="per_request">按次计费（按请求）</option>
 								</select>
 								<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
-									选择此模型的计费方式：按量计费根据 Token 数量收费，按次计费每次请求固定价格
+									选择此模型的计费方式：免费模型不收费，按量计费根据 Token
+									数量收费，按次计费每次请求固定价格
 								</p>
 							</div>
 						</div>
 
-						{#if info.billing_type === 'per_token'}
+						{#if info.billing_type === 'free'}
+							<!-- 免费模型：不显示任何价格字段 -->
+							<div class="grid grid-cols-1 gap-3 mt-2">
+								<div class="flex flex-col gap-1">
+									<p class="text-sm text-gray-500 dark:text-gray-400">
+										此模型为免费模型，不会产生任何费用。
+									</p>
+								</div>
+							</div>
+						{:else if info.billing_type === 'per_token'}
 							<!-- 按量计费字段 -->
 							<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
 								<div class="flex flex-col gap-1">

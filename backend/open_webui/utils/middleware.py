@@ -162,7 +162,14 @@ def enrich_usage_with_cost(usage: dict, model: dict) -> dict:
     billing_type = model_info.get("billing_type", "per_token")
     price_group_multiplier = model_info.get("price_group_multiplier", 1.0) or 1.0
 
-    if billing_type == "per_request":
+    if billing_type == "free":
+        # 免费模型：费用为0
+        usage["cost"] = {
+            "currency": "CNY",
+            "billing_type": "free",
+            "total": 0,
+        }
+    elif billing_type == "per_request":
         # 按次计费：每次请求固定价格
         per_request_price = model_info.get("per_request_price", 0) or 0
         total_cost = per_request_price * price_group_multiplier

@@ -84,7 +84,10 @@
 			const toAmount = (value) => Number(value ?? 0).toFixed(6);
 			const billingType = usage.cost.billing_type || 'per_token';
 
-			if (billingType === 'per_request') {
+			if (billingType === 'free') {
+				// 免费模型：显示免费标识
+				lines.push(`费用合计: 免费`);
+			} else if (billingType === 'per_request') {
 				// 按次计费：只显示总费用
 				lines.push(`费用合计: ¥${toAmount(usage.cost.total)} (按次计费)`);
 			} else {
