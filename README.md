@@ -1,6 +1,5 @@
 # OpenWebUI - 功能增强版 (Enhanced Edition)
 
-![OpenWebUI Logo](https://github.com/open-webui/open-webui/blob/main/docs/static/favicon.png?raw=true)
 
 > **基于官方 OpenWebUI 二次开发，深度汉化细节体验。**
 > 本版本同步至官方最新，在保留原版所有功能的前提下，补充了官方没做的汉化细节，并新增了按次计费、模型快捷入口、Token 预估等实用功能，使用更顺手。
@@ -39,8 +38,8 @@
 | 模式 | 描述 |
 | :--- | :--- |
 | **按量计费 (Per Token)** | 官方原生逻辑，算得细，用多少扣多少。 |
-| **按次计费 (Per Request)** |：简单粗暴，聊一次扣一次钱（比如 0.1元/次），不用算 Token 账。 |
-| **免费模式 (Free)** | ：设置为免费的模型，前端会直接提示“免费”，不扣余额。 |
+| **按次计费 (Per Request)** |简单粗暴，聊一次扣一次钱（比如 0.1元/次），不用算 Token 账。 |
+| **免费模式 (Free)** | 设置为免费的模型，前端会直接提示“免费”，不扣余额。 |
 <img width="1630" height="321" alt="PixPin_2025-11-25_20-34-00" src="https://github.com/user-attachments/assets/38294f08-978f-4659-a321-d06e3e76ab18" />
 
 > **费用统计汉化**：重写了对话框底部的黑色浮窗，完全汉化，并能根据计费模式显示如 `¥0.05 (按次计费)`。
