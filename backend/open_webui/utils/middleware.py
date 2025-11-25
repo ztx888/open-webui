@@ -159,36 +159,51 @@ def enrich_usage_with_cost(usage: dict, model: dict) -> dict:
     usage["total_tokens"] = total_tokens
 
     model_info = model.get("info", {}) if isinstance(model, dict) else {}
-    input_price_value = model_info.get("input_price_value", 0) or 0
-    input_price_unit = (model_info.get("input_price_unit") or "M").upper()
-    output_price_value = model_info.get("output_price_value", 0) or 0
-    output_price_unit = (model_info.get("output_price_unit") or "M").upper()
+    billing_type = model_info.get("billing_type", "per_token")
     price_group_multiplier = model_info.get("price_group_multiplier", 1.0) or 1.0
 
-    if input_price_unit == "K":
-        per_token_input_price = (input_price_value / 1000.0) * price_group_multiplier
+    if billing_type == "per_request":
+        # 按次计费：每次请求固定价格
+        per_request_price = model_info.get("per_request_price", 0) or 0
+        total_cost = per_request_price * price_group_multiplier
+        
+        usage["cost"] = {
+            "currency": "CNY",
+            "billing_type": "per_request",
+            "total": total_cost,
+        }
     else:
-        per_token_input_price = (input_price_value / 1_000_000.0) * price_group_multiplier
+        # 按量计费（默认）：基于Token数量
+        input_price_value = model_info.get("input_price_value", 0) or 0
+        input_price_unit = (model_info.get("input_price_unit") or "M").upper()
+        output_price_value = model_info.get("output_price_value", 0) or 0
+        output_price_unit = (model_info.get("output_price_unit") or "M").upper()
 
-    if output_price_unit == "K":
-        per_token_output_price = (
-            (output_price_value / 1000.0) * price_group_multiplier
-        )
-    else:
-        per_token_output_price = (
-            (output_price_value / 1_000_000.0) * price_group_multiplier
-        )
+        if input_price_unit == "K":
+            per_token_input_price = (input_price_value / 1000.0) * price_group_multiplier
+        else:
+            per_token_input_price = (input_price_value / 1_000_000.0) * price_group_multiplier
 
-    input_cost = prompt_tokens * per_token_input_price
-    output_cost = (completion_tokens + reasoning_tokens) * per_token_output_price
-    total_cost = input_cost + output_cost
+        if output_price_unit == "K":
+            per_token_output_price = (
+                (output_price_value / 1000.0) * price_group_multiplier
+            )
+        else:
+            per_token_output_price = (
+                (output_price_value / 1_000_000.0) * price_group_multiplier
+            )
 
-    usage["cost"] = {
-        "currency": "CNY",
-        "input": input_cost,
-        "output": output_cost,
-        "total": total_cost,
-    }
+        input_cost = prompt_tokens * per_token_input_price
+        output_cost = (completion_tokens + reasoning_tokens) * per_token_output_price
+        total_cost = input_cost + output_cost
+
+        usage["cost"] = {
+            "currency": "CNY",
+            "billing_type": "per_token",
+            "input": input_cost,
+            "output": output_cost,
+            "total": total_cost,
+        }
 
     return usage
 

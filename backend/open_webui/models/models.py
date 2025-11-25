@@ -103,6 +103,9 @@ class Model(Base):
     output_price_value = Column(Float, default=0)
     output_price_unit = Column(Text, default="M")
     price_group_multiplier = Column(Float, default=1.0)
+    
+    billing_type = Column(Text, default="per_token")
+    per_request_price = Column(Float, default=0)
 
     updated_at = Column(BigInteger)
     created_at = Column(BigInteger)
@@ -124,6 +127,9 @@ class ModelModel(BaseModel):
     output_price_value: float = 0
     output_price_unit: str = "M"
     price_group_multiplier: float = 1.0
+    
+    billing_type: str = "per_token"
+    per_request_price: float = 0
 
     is_active: bool
     updated_at: int  # timestamp in epoch
@@ -164,6 +170,9 @@ class ModelForm(BaseModel):
     output_price_value: float = 0
     output_price_unit: str = "M"
     price_group_multiplier: float = 1.0
+    
+    billing_type: str = "per_token"
+    per_request_price: float = 0
 
 
 class ModelsTable:

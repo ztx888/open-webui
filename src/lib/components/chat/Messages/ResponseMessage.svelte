@@ -82,9 +82,17 @@
 
 		if (usage?.cost) {
 			const toAmount = (value) => Number(value ?? 0).toFixed(6);
-			lines.push(
-				`费用合计: ¥${toAmount(usage.cost.total)} (输入: ¥${toAmount(usage.cost.input)}, 输出: ¥${toAmount(usage.cost.output)})`
-			);
+			const billingType = usage.cost.billing_type || 'per_token';
+
+			if (billingType === 'per_request') {
+				// 按次计费：只显示总费用
+				lines.push(`费用合计: ¥${toAmount(usage.cost.total)} (按次计费)`);
+			} else {
+				// 按量计费：显示输入、输出和总费用
+				lines.push(
+					`费用合计: ¥${toAmount(usage.cost.total)} (输入: ¥${toAmount(usage.cost.input)}, 输出: ¥${toAmount(usage.cost.output)})`
+				);
+			}
 		}
 
 		return `<div class="text-xs leading-5">${lines

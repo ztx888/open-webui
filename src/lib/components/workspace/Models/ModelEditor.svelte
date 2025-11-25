@@ -81,7 +81,9 @@
 		input_price_unit: 'M',
 		output_price_value: 0,
 		output_price_unit: 'M',
-		price_group_multiplier: 1
+		price_group_multiplier: 1,
+		billing_type: 'per_token',
+		per_request_price: 0
 	};
 
 	let params = {
@@ -219,6 +221,7 @@
 		info.input_price_value = Number(info.input_price_value ?? 0);
 		info.output_price_value = Number(info.output_price_value ?? 0);
 		info.price_group_multiplier = Number(info.price_group_multiplier ?? 1);
+		info.per_request_price = Number(info.per_request_price ?? 0);
 
 		await onSubmit(info);
 
@@ -612,58 +615,98 @@
 							<div class=" self-center text-sm font-semibold">计价设置</div>
 						</div>
 
-						<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+						<div class="grid grid-cols-1 gap-3 mt-2">
+							<!-- 计费方式选择器 -->
 							<div class="flex flex-col gap-1">
-								<div class="text-xs font-semibold">输入单价</div>
-								<div class="flex gap-2">
+								<div class="text-xs font-semibold">计费方式</div>
+								<select
+									class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
+									bind:value={info.billing_type}
+								>
+									<option value="per_token">按量计费（按 Token）</option>
+									<option value="per_request">按次计费（按请求）</option>
+								</select>
+								<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
+									选择此模型的计费方式：按量计费根据 Token 数量收费，按次计费每次请求固定价格
+								</p>
+							</div>
+						</div>
+
+						{#if info.billing_type === 'per_token'}
+							<!-- 按量计费字段 -->
+							<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+								<div class="flex flex-col gap-1">
+									<div class="text-xs font-semibold">输入单价</div>
+									<div class="flex gap-2">
+										<input
+											type="number"
+											step="0.000001"
+											min="0"
+											class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
+											bind:value={info.input_price_value}
+										/>
+										<button
+											class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2.5 py-2 text-sm min-w-fit transition"
+											type="button"
+											on:click={() => {
+												info.input_price_unit = (info.input_price_unit ?? 'K') === 'K' ? 'M' : 'K';
+											}}
+										>
+											{info.input_price_unit ?? 'K'}
+										</button>
+									</div>
+									<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
+										单位：人民币 / 每 1K 或 1M Tokens，请按 RMB 金额填写
+									</p>
+								</div>
+
+								<div class="flex flex-col gap-1">
+									<div class="text-xs font-semibold">输出单价</div>
+									<div class="flex gap-2">
+										<input
+											type="number"
+											step="0.000001"
+											min="0"
+											class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
+											bind:value={info.output_price_value}
+										/>
+										<button
+											class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2.5 py-2 text-sm min-w-fit transition"
+											type="button"
+											on:click={() => {
+												info.output_price_unit =
+													(info.output_price_unit ?? 'K') === 'K' ? 'M' : 'K';
+											}}
+										>
+											{info.output_price_unit ?? 'K'}
+										</button>
+									</div>
+									<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
+										单位：人民币 / 每 1K 或 1M Tokens，请按 RMB 金额填写
+									</p>
+								</div>
+							</div>
+						{:else}
+							<!-- 按次计费字段 -->
+							<div class="grid grid-cols-1 gap-3 mt-2">
+								<div class="flex flex-col gap-1">
+									<div class="text-xs font-semibold">按次计费价格</div>
 									<input
 										type="number"
 										step="0.000001"
 										min="0"
 										class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
-										bind:value={info.input_price_value}
+										bind:value={info.per_request_price}
 									/>
-									<button
-										class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2.5 py-2 text-sm min-w-fit transition"
-										type="button"
-										on:click={() => {
-											info.input_price_unit = (info.input_price_unit ?? 'K') === 'K' ? 'M' : 'K';
-										}}
-									>
-										{info.input_price_unit ?? 'K'}
-									</button>
+									<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
+										单位：人民币 / 每次请求，请按 RMB 金额填写
+									</p>
 								</div>
-								<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
-									单位：人民币 / 每 1K 或 1M Tokens，请按 RMB 金额填写
-								</p>
 							</div>
+						{/if}
 
+						<div class="grid grid-cols-1 gap-3">
 							<div class="flex flex-col gap-1">
-								<div class="text-xs font-semibold">输出单价</div>
-								<div class="flex gap-2">
-									<input
-										type="number"
-										step="0.000001"
-										min="0"
-										class="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-3 py-2 text-sm"
-										bind:value={info.output_price_value}
-									/>
-									<button
-										class="rounded-xl border border-gray-200 dark:border-gray-800 bg-transparent px-2.5 py-2 text-sm min-w-fit transition"
-										type="button"
-										on:click={() => {
-											info.output_price_unit = (info.output_price_unit ?? 'K') === 'K' ? 'M' : 'K';
-										}}
-									>
-										{info.output_price_unit ?? 'K'}
-									</button>
-								</div>
-								<p class="text-[0.7rem] text-gray-500 dark:text-gray-400">
-									单位：人民币 / 每 1K 或 1M Tokens，请按 RMB 金额填写
-								</p>
-							</div>
-
-							<div class="flex flex-col gap-1 md:col-span-2">
 								<div class="text-xs font-semibold">分组倍率</div>
 								<input
 									type="number"

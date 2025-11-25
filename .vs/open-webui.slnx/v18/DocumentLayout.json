@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\code\\open-webui\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\code\\open-webui\\backend\\open_webui\\migrations\\versions\\f1a2b3c4d5e6_add_billing_type_fields.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\open_webui\\migrations\\versions\\f1a2b3c4d5e6_add_billing_type_fields.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\code\\open-webui\\backend\\open_webui\\migrations\\versions\\92715d6d9265_merge_custom_and_official.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\open_webui\\migrations\\versions\\92715d6d9265_merge_custom_and_official.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\code\\open-webui\\backend\\open_webui\\models\\models.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\open_webui\\models\\models.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\code\\open-webui\\Dockerfile||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Dockerfile||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
@@ -174,7 +186,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -182,11 +194,54 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "92715d6d9265_merge_custom_and_official.py",
+              "DocumentMoniker": "D:\\code\\open-webui\\backend\\open_webui\\migrations\\versions\\92715d6d9265_merge_custom_and_official.py",
+              "RelativeDocumentMoniker": "backend\\open_webui\\migrations\\versions\\92715d6d9265_merge_custom_and_official.py",
+              "ToolTip": "D:\\code\\open-webui\\backend\\open_webui\\migrations\\versions\\92715d6d9265_merge_custom_and_official.py",
+              "RelativeToolTip": "backend\\open_webui\\migrations\\versions\\92715d6d9265_merge_custom_and_official.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAIAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMtSURBVDhPrZS9T1tnFMZ/1/cLGxy7BNuJIeCG2hIiSSWqRmmR8Fh16lhVVVTRIR34Ezo2kSqUqUJeKkHLEqlDWZAyUJZEoUNaoTatXEgsQykGFFyw8de997337RA5MeYqUx/pDOc55zx6znmlF/5PSCmVzjybzX4/NTV1U9f1TvoUKpWKrFard5aXl\u002B/u7e1Vu\u002BtaNzE9PU0ikeimX2J1dVUWi8UvVFWVKysr3xQKhXJn/YwgQKFQ6KZQVZVUKoWu64FsNhtNp9O3LMsKapo2u7Gxcdju8xVMJpPdFIry6jqGYeiTk5MDuq5/IqW0hBBfFwqFOkCgc6gNwzDORPuuqqqytLTE3Nycura2diEUCk2Yphlvz/o63Nzc7KbQNI10Os27N95n4vp7aAGFZv3Emp\u002Bf//tUX2fSxtjYWDdFzRL8lD9kv9qk2bTRA3AxrGoXh4b7A4FXi/oK\u002Bjm0\u002BpI8269xUKnz\u002BOk\u002BwrGJ9Rn6R\u002BNDI/F4vK/d53vDVCp1JioNwaONPfI7ZTzh4AmXaq2hNEQgGA6HQ\u002B1ZX0EA13VxUfjrucO9xwf8tl3m2qUoE6l\u002BzvfqCOEghCAWrV9d\u002Bu7mz17zjyee5w37rry1tQXAbkvnxycn7JZPEMLGdRyE4\u002BA6Np7r4CkKhvIcmuvQWh8n9uWsr8NMJkMmk6Ehezg4riGEg\u002BcINDwiQY1ISCca0nk7FeJasgpuE6x/wN75wNdhPp8HYGe3iWXZeEIw3K8xk20SVI\u002BR0gPpETWOGAwegGi8EHWPI691ODKYwAiAEA63sgbvXPiV8dgzrsQLXBnIM9RbRBH/gqiBWwc9eeQraNs2tm0z8obJ5YEgYVMlds5DkS54NggLPA9cQAZA6tBz1cUY/NZ35VKpBIAJfJ69TMWCRGQLWja4LVAioARBV8DMHGG\u002B\u002BSc9bz1dXFyc9RUcHR09lSuKgumVJLW6gtsC9xB6b4BUQD2/88P93a8ePLj3KJfLNc4ILiwsvPwIOvHZpx9uXzIHU9i/v3iAk1\u002BQfdelG5woP3x4u5jL5RrdM6\u002BFlPKc9Jy7srW9J2vrnrRK21LK\u002B1LKj2dmZlLtvv8AoKdgTW7XN1wAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-11-25T05:49:17.63Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "f1a2b3c4d5e6_add_billing_type_fields.py",
+              "DocumentMoniker": "D:\\code\\open-webui\\backend\\open_webui\\migrations\\versions\\f1a2b3c4d5e6_add_billing_type_fields.py",
+              "RelativeDocumentMoniker": "backend\\open_webui\\migrations\\versions\\f1a2b3c4d5e6_add_billing_type_fields.py",
+              "ToolTip": "D:\\code\\open-webui\\backend\\open_webui\\migrations\\versions\\f1a2b3c4d5e6_add_billing_type_fields.py",
+              "RelativeToolTip": "backend\\open_webui\\migrations\\versions\\f1a2b3c4d5e6_add_billing_type_fields.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAwAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMtSURBVDhPrZS9T1tnFMZ/1/cLGxy7BNuJIeCG2hIiSSWqRmmR8Fh16lhVVVTRIR34Ezo2kSqUqUJeKkHLEqlDWZAyUJZEoUNaoTatXEgsQykGFFyw8de997337RA5MeYqUx/pDOc55zx6znmlF/5PSCmVzjybzX4/NTV1U9f1TvoUKpWKrFard5aXl\u002B/u7e1Vu\u002BtaNzE9PU0ikeimX2J1dVUWi8UvVFWVKysr3xQKhXJn/YwgQKFQ6KZQVZVUKoWu64FsNhtNp9O3LMsKapo2u7Gxcdju8xVMJpPdFIry6jqGYeiTk5MDuq5/IqW0hBBfFwqFOkCgc6gNwzDORPuuqqqytLTE3Nycura2diEUCk2Yphlvz/o63Nzc7KbQNI10Os27N95n4vp7aAGFZv3Emp\u002Bf//tUX2fSxtjYWDdFzRL8lD9kv9qk2bTRA3AxrGoXh4b7A4FXi/oK\u002Bjm0\u002BpI8269xUKnz\u002BOk\u002BwrGJ9Rn6R\u002BNDI/F4vK/d53vDVCp1JioNwaONPfI7ZTzh4AmXaq2hNEQgGA6HQ\u002B1ZX0EA13VxUfjrucO9xwf8tl3m2qUoE6l\u002BzvfqCOEghCAWrV9d\u002Bu7mz17zjyee5w37rry1tQXAbkvnxycn7JZPEMLGdRyE4\u002BA6Np7r4CkKhvIcmuvQWh8n9uWsr8NMJkMmk6Ehezg4riGEg\u002BcINDwiQY1ISCca0nk7FeJasgpuE6x/wN75wNdhPp8HYGe3iWXZeEIw3K8xk20SVI\u002BR0gPpETWOGAwegGi8EHWPI691ODKYwAiAEA63sgbvXPiV8dgzrsQLXBnIM9RbRBH/gqiBWwc9eeQraNs2tm0z8obJ5YEgYVMlds5DkS54NggLPA9cQAZA6tBz1cUY/NZ35VKpBIAJfJ69TMWCRGQLWja4LVAioARBV8DMHGG\u002B\u002BSc9bz1dXFyc9RUcHR09lSuKgumVJLW6gtsC9xB6b4BUQD2/88P93a8ePLj3KJfLNc4ILiwsvPwIOvHZpx9uXzIHU9i/v3iAk1\u002BQfdelG5woP3x4u5jL5RrdM6\u002BFlPKc9Jy7srW9J2vrnrRK21LK\u002B1LKj2dmZlLtvv8AoKdgTW7XN1wAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-11-25T05:36:34.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "models.py",
+              "DocumentMoniker": "D:\\code\\open-webui\\backend\\open_webui\\models\\models.py",
+              "RelativeDocumentMoniker": "backend\\open_webui\\models\\models.py",
+              "ToolTip": "D:\\code\\open-webui\\backend\\open_webui\\models\\models.py",
+              "RelativeToolTip": "backend\\open_webui\\models\\models.py",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAjwGwAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMtSURBVDhPrZS9T1tnFMZ/1/cLGxy7BNuJIeCG2hIiSSWqRmmR8Fh16lhVVVTRIR34Ezo2kSqUqUJeKkHLEqlDWZAyUJZEoUNaoTatXEgsQykGFFyw8de997337RA5MeYqUx/pDOc55zx6znmlF/5PSCmVzjybzX4/NTV1U9f1TvoUKpWKrFard5aXl\u002B/u7e1Vu\u002BtaNzE9PU0ikeimX2J1dVUWi8UvVFWVKysr3xQKhXJn/YwgQKFQ6KZQVZVUKoWu64FsNhtNp9O3LMsKapo2u7Gxcdju8xVMJpPdFIry6jqGYeiTk5MDuq5/IqW0hBBfFwqFOkCgc6gNwzDORPuuqqqytLTE3Nycura2diEUCk2Yphlvz/o63Nzc7KbQNI10Os27N95n4vp7aAGFZv3Emp\u002Bf//tUX2fSxtjYWDdFzRL8lD9kv9qk2bTRA3AxrGoXh4b7A4FXi/oK\u002Bjm0\u002BpI8269xUKnz\u002BOk\u002BwrGJ9Rn6R\u002BNDI/F4vK/d53vDVCp1JioNwaONPfI7ZTzh4AmXaq2hNEQgGA6HQ\u002B1ZX0EA13VxUfjrucO9xwf8tl3m2qUoE6l\u002BzvfqCOEghCAWrV9d\u002Bu7mz17zjyee5w37rry1tQXAbkvnxycn7JZPEMLGdRyE4\u002BA6Np7r4CkKhvIcmuvQWh8n9uWsr8NMJkMmk6Ehezg4riGEg\u002BcINDwiQY1ISCca0nk7FeJasgpuE6x/wN75wNdhPp8HYGe3iWXZeEIw3K8xk20SVI\u002BR0gPpETWOGAwegGi8EHWPI691ODKYwAiAEA63sgbvXPiV8dgzrsQLXBnIM9RbRBH/gqiBWwc9eeQraNs2tm0z8obJ5YEgYVMlds5DkS54NggLPA9cQAZA6tBz1cUY/NZ35VKpBIAJfJ69TMWCRGQLWja4LVAioARBV8DMHGG\u002B\u002BSc9bz1dXFyc9RUcHR09lSuKgumVJLW6gtsC9xB6b4BUQD2/88P93a8ePLj3KJfLNc4ILiwsvPwIOvHZpx9uXzIHU9i/v3iAk1\u002BQfdelG5woP3x4u5jL5RrdM6\u002BFlPKc9Jy7srW9J2vrnrRK21LK\u002B1LKj2dmZlLtvv8AoKdgTW7XN1wAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-11-25T05:33:51.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Dockerfile",
               "DocumentMoniker": "D:\\code\\open-webui\\Dockerfile",
               "RelativeDocumentMoniker": "Dockerfile",
@@ -199,7 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "eddd1a9322ad_add_model_pricing_fields.py",
               "DocumentMoniker": "D:\\code\\open-webui\\backend\\open_webui\\migrations\\versions\\eddd1a9322ad_add_model_pricing_fields.py",
               "RelativeDocumentMoniker": "backend\\open_webui\\migrations\\versions\\eddd1a9322ad_add_model_pricing_fields.py",
@@ -207,12 +262,11 @@
               "RelativeToolTip": "backend\\open_webui\\migrations\\versions\\eddd1a9322ad_add_model_pricing_fields.py",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAA1AAAAAAAAAA==",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMtSURBVDhPrZS9T1tnFMZ/1/cLGxy7BNuJIeCG2hIiSSWqRmmR8Fh16lhVVVTRIR34Ezo2kSqUqUJeKkHLEqlDWZAyUJZEoUNaoTatXEgsQykGFFyw8de997337RA5MeYqUx/pDOc55zx6znmlF/5PSCmVzjybzX4/NTV1U9f1TvoUKpWKrFard5aXl\u002B/u7e1Vu\u002BtaNzE9PU0ikeimX2J1dVUWi8UvVFWVKysr3xQKhXJn/YwgQKFQ6KZQVZVUKoWu64FsNhtNp9O3LMsKapo2u7Gxcdju8xVMJpPdFIry6jqGYeiTk5MDuq5/IqW0hBBfFwqFOkCgc6gNwzDORPuuqqqytLTE3Nycura2diEUCk2Yphlvz/o63Nzc7KbQNI10Os27N95n4vp7aAGFZv3Emp\u002Bf//tUX2fSxtjYWDdFzRL8lD9kv9qk2bTRA3AxrGoXh4b7A4FXi/oK\u002Bjm0\u002BpI8269xUKnz\u002BOk\u002BwrGJ9Rn6R\u002BNDI/F4vK/d53vDVCp1JioNwaONPfI7ZTzh4AmXaq2hNEQgGA6HQ\u002B1ZX0EA13VxUfjrucO9xwf8tl3m2qUoE6l\u002BzvfqCOEghCAWrV9d\u002Bu7mz17zjyee5w37rry1tQXAbkvnxycn7JZPEMLGdRyE4\u002BA6Np7r4CkKhvIcmuvQWh8n9uWsr8NMJkMmk6Ehezg4riGEg\u002BcINDwiQY1ISCca0nk7FeJasgpuE6x/wN75wNdhPp8HYGe3iWXZeEIw3K8xk20SVI\u002BR0gPpETWOGAwegGi8EHWPI691ODKYwAiAEA63sgbvXPiV8dgzrsQLXBnIM9RbRBH/gqiBWwc9eeQraNs2tm0z8obJ5YEgYVMlds5DkS54NggLPA9cQAZA6tBz1cUY/NZ35VKpBIAJfJ69TMWCRGQLWja4LVAioARBV8DMHGG\u002B\u002BSc9bz1dXFyc9RUcHR09lSuKgumVJLW6gtsC9xB6b4BUQD2/88P93a8ePLj3KJfLNc4ILiwsvPwIOvHZpx9uXzIHU9i/v3iAk1\u002BQfdelG5woP3x4u5jL5RrdM6\u002BFlPKc9Jy7srW9J2vrnrRK21LK\u002B1LKj2dmZlLtvv8AoKdgTW7XN1wAAAAASUVORK5CYII=",
-              "WhenOpened": "2025-11-24T18:53:24.996Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-24T18:53:24.996Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "languages.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\languages.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\languages.json",
@@ -224,7 +278,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\vi-VN\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\vi-VN\\translation.json",
@@ -236,7 +290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\uz-Latn-Uz\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\uz-Latn-Uz\\translation.json",
@@ -248,7 +302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\uz-Cyrl-UZ\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\uz-Cyrl-UZ\\translation.json",
@@ -260,7 +314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\ur-PK\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\ur-PK\\translation.json",
@@ -272,7 +326,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\uk-UA\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\uk-UA\\translation.json",
@@ -284,7 +338,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\ug-CN\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\ug-CN\\translation.json",
@@ -296,7 +350,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\tr-TR\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\tr-TR\\translation.json",
@@ -308,7 +362,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\tk-TM\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\tk-TM\\translation.json",
@@ -320,7 +374,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\th-TH\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\th-TH\\translation.json",
@@ -332,7 +386,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\sv-SE\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\sv-SE\\translation.json",
@@ -344,7 +398,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\sr-RS\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\sr-RS\\translation.json",
@@ -356,7 +410,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\sk-SK\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\sk-SK\\translation.json",
@@ -368,7 +422,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\ru-RU\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\ru-RU\\translation.json",
@@ -380,7 +434,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\pt-PT\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\pt-PT\\translation.json",
@@ -392,7 +446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\pt-BR\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\pt-BR\\translation.json",
@@ -404,7 +458,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\ro-RO\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\ro-RO\\translation.json",
@@ -416,7 +470,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\nl-NL\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\nl-NL\\translation.json",
@@ -428,7 +482,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\ms-MY\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\ms-MY\\translation.json",
@@ -440,7 +494,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\lt-LT\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\lt-LT\\translation.json",
@@ -452,7 +506,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\ko-KR\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\ko-KR\\translation.json",
@@ -464,7 +518,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\kab-DZ\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\kab-DZ\\translation.json",
@@ -476,7 +530,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\ka-GE\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\ka-GE\\translation.json",
@@ -488,7 +542,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\ja-JP\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\ja-JP\\translation.json",
@@ -500,7 +554,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\it-IT\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\it-IT\\translation.json",
@@ -512,7 +566,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\ie-GA\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\ie-GA\\translation.json",
@@ -524,7 +578,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\zh-CN\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\zh-CN\\translation.json",
@@ -536,7 +590,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\zh-TW\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\zh-TW\\translation.json",
@@ -548,7 +602,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\gl-ES\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\gl-ES\\translation.json",
@@ -560,7 +614,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\fr-FR\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\fr-FR\\translation.json",
@@ -572,7 +626,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 36,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\fr-CA\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\fr-CA\\translation.json",
@@ -584,7 +638,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 37,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\fi-FI\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\fi-FI\\translation.json",
@@ -596,7 +650,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\fa-IR\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\fa-IR\\translation.json",
@@ -608,7 +662,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 38,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\eu-ES\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\eu-ES\\translation.json",
@@ -620,7 +674,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 39,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\et-EE\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\et-EE\\translation.json",
@@ -632,7 +686,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 40,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\es-ES\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\es-ES\\translation.json",
@@ -644,7 +698,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 41,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\dg-DG\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\dg-DG\\translation.json",
@@ -656,7 +710,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 42,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\de-DE\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\de-DE\\translation.json",
@@ -668,7 +722,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 43,
               "Title": "translation.json",
               "DocumentMoniker": "D:\\code\\open-webui\\src\\lib\\i18n\\locales\\da-DK\\translation.json",
               "RelativeDocumentMoniker": "src\\lib\\i18n\\locales\\da-DK\\translation.json",
