@@ -416,15 +416,50 @@
 		{#if (params?.reasoning_effort ?? null) !== null}
 			<div class="flex mt-0.5 space-x-2">
 				<div class=" flex-1">
-					<input
-						class="text-sm w-full bg-transparent outline-hidden outline-none"
-						type="text"
-						placeholder={$i18n.t('Enter reasoning effort')}
+					<select
+						class="text-sm w-full bg-transparent border border-gray-300 dark:border-gray-600 rounded px-2 py-1 outline-none"
 						bind:value={params.reasoning_effort}
-						autocomplete="off"
-					/>
+						on:change={(e) => {
+							if (e.target.value === '__custom__') {
+								params.reasoning_effort = '';
+							}
+						}}
+					>
+						<optgroup label={$i18n.t('Text Options')}>
+							<option value="none">none</option>
+							<option value="minimal">minimal</option>
+							<option value="low">low</option>
+							<option value="medium">medium (默认)</option>
+							<option value="high">high</option>
+							<option value="maximum">maximum</option>
+							<option value="disabled">disabled</option>
+							<option value="default">default</option>
+						</optgroup>
+						<optgroup label={$i18n.t('Token Levels')}>
+							<option value="4096">4096</option>
+							<option value="16384">16384</option>
+							<option value="32768">32768</option>
+						</optgroup>
+						{#if !['none', 'minimal', 'low', 'medium', 'high', 'maximum', 'disabled', 'default', '4096', '16384', '32768'].includes(params.reasoning_effort)}
+							<option value={params.reasoning_effort} selected>{$i18n.t('Custom')}: {params.reasoning_effort}</option>
+						{/if}
+						<option value="__custom__">{$i18n.t('Custom Input')}...</option>
+					</select>
 				</div>
 			</div>
+			{#if !['none', 'minimal', 'low', 'medium', 'high', 'maximum', 'disabled', 'default', '4096', '16384', '32768'].includes(params.reasoning_effort) && params.reasoning_effort !== '__custom__'}
+				<div class="flex mt-0.5 space-x-2">
+					<div class=" flex-1">
+						<input
+							class="text-sm w-full bg-transparent outline-hidden outline-none border border-gray-300 dark:border-gray-600 rounded px-2 py-1"
+							type="text"
+							placeholder={$i18n.t('Enter custom reasoning effort')}
+							bind:value={params.reasoning_effort}
+							autocomplete="off"
+						/>
+					</div>
+				</div>
+			{/if}
 		{/if}
 	</div>
 
@@ -760,7 +795,7 @@
 		>
 			<div class="flex w-full justify-between">
 				<div class=" self-center text-xs font-medium">
-					{$i18n.t('presence_penalty')}
+					存在惩罚 (presence_penalty)
 				</div>
 
 				<button
