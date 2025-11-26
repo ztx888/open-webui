@@ -6,7 +6,7 @@ import sys
 from aiocache import cached
 from fastapi import Request
 
-from open_webui.routers import openai, ollama
+from open_webui.routers import openai, ollama, gemini
 from open_webui.functions import get_function_models
 
 
@@ -58,6 +58,25 @@ async def fetch_openai_models(request: Request, user: UserModel = None):
     return openai_response["data"]
 
 
+async def fetch_gemini_models(request: Request, user: UserModel = None):
+    from open_webui.routers.gemini import get_models
+    
+    gemini_response = await get_models(request, user=user)
+    return [
+        {
+            "id": model["id"],
+            "name": model.get("name", model["id"]),
+            "object": "model",
+            "created": int(time.time()),
+            "owned_by": "google",
+            "gemini": model.get("gemini", {}),
+            "urlIdx": model.get("urlIdx"),
+            "tags": model.get("tags", []),
+        }
+        for model in gemini_response.get("data", [])
+    ]
+
+
 async def get_all_base_models(request: Request, user: UserModel = None):
     openai_task = (
         fetch_openai_models(request, user)
@@ -69,13 +88,18 @@ async def get_all_base_models(request: Request, user: UserModel = None):
         if request.app.state.config.ENABLE_OLLAMA_API
         else asyncio.sleep(0, result=[])
     )
+    gemini_task = (
+        fetch_gemini_models(request, user)
+        if request.app.state.config.ENABLE_GEMINI_API
+        else asyncio.sleep(0, result=[])
+    )
     function_task = get_function_models(request)
 
-    openai_models, ollama_models, function_models = await asyncio.gather(
-        openai_task, ollama_task, function_task
+    openai_models, ollama_models, gemini_models, function_models = await asyncio.gather(
+        openai_task, ollama_task, gemini_task, function_task
     )
 
-    return function_models + openai_models + ollama_models
+    return function_models + openai_models + ollama_models + gemini_models
 
 
 async def get_all_models(request, refresh: bool = False, user: UserModel = None):

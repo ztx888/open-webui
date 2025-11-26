@@ -6,6 +6,7 @@
 	import { settings } from '$lib/stores';
 	import { verifyOpenAIConnection } from '$lib/apis/openai';
 	import { verifyOllamaConnection } from '$lib/apis/ollama';
+	import { verifyGeminiConnection } from '$lib/apis/gemini';
 
 	import Modal from '$lib/components/common/Modal.svelte';
 	import Plus from '$lib/components/icons/Plus.svelte';
@@ -26,6 +27,7 @@
 	export let edit = false;
 
 	export let ollama = false;
+	export let gemini = false;
 	export let direct = false;
 
 	export let connection = null;
@@ -111,9 +113,32 @@
 		}
 	};
 
+	const verifyGeminiHandler = async () => {
+		// remove trailing slash from url
+		url = url.replace(/\/$/, '');
+
+		const res = await verifyGeminiConnection(
+			localStorage.token,
+			{
+				url,
+				key,
+				config: {}
+			},
+			direct
+		).catch((error) => {
+			toast.error(`${error}`);
+		});
+
+		if (res) {
+			toast.success($i18n.t('Server connection verified'));
+		}
+	};
+
 	const verifyHandler = () => {
 		if (ollama) {
 			verifyOllamaHandler();
+		} else if (gemini) {
+			verifyGeminiHandler();
 		} else {
 			verifyOpenAIHandler();
 		}
@@ -207,7 +232,14 @@
 		if (connection) {
 			url = connection.url;
 			key = connection.key;
+		} else {
+			// Set default URL for new Gemini connections
+			if (gemini && !url) {
+				url = 'https://generativelanguage.googleapis.com/v1beta';
+			}
+		}
 
+		if (connection) {
 			auth_type = connection.config.auth_type ?? 'bearer';
 			headers = connection.config?.headers
 				? JSON.stringify(connection.config.headers, null, 2)
@@ -496,7 +528,7 @@
 							</div>
 						</div>
 
-						{#if !ollama && !direct}
+						{#if !ollama && !direct && !gemini}
 							<div class="flex flex-row justify-between items-center w-full mt-2">
 								<label
 									for="prefix-id-input"
@@ -516,6 +548,13 @@
 										{azure ? $i18n.t('Azure OpenAI') : $i18n.t('OpenAI')}
 									</button>
 								</div>
+							</div>
+						{/if}
+
+						{#if gemini}
+							<div class="flex flex-row justify-between items-center w-full mt-2">
+								<div class="text-xs text-gray-500">{$i18n.t('Provider Type')}</div>
+								<div class="text-xs text-gray-700 dark:text-gray-300">Google Gemini</div>
 							</div>
 						{/if}
 

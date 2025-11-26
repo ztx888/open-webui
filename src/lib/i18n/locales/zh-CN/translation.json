@@ -997,6 +997,7 @@
 	"Manage Models": "管理模型",
 	"Manage Ollama": "管理 Ollama",
 	"Manage Ollama API Connections": "管理 Ollama 接口连接",
+	"Manage Gemini API Connections": "管理 Gemini 接口连接",
 	"Manage OpenAI API Connections": "管理 OpenAI 接口连接",
 	"Manage Pipelines": "管理 Pipeline",
 	"Manage Tool Servers": "管理工具服务器",

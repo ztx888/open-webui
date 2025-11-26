@@ -1069,7 +1069,7 @@ OPENAI_API_CONFIGS = PersistentConfig(
     {},
 )
 
-# Get the actual OpenAI API key based on the base URL
+# GET the actual OpenAI API key based on the base URL
 OPENAI_API_KEY = ""
 try:
     OPENAI_API_KEY = OPENAI_API_KEYS.value[
@@ -1078,6 +1078,51 @@ try:
 except Exception:
     pass
 OPENAI_API_BASE_URL = "https://api.openai.com/v1"
+
+
+####################################
+# GEMINI API
+####################################
+
+ENABLE_GEMINI_API = PersistentConfig(
+    "ENABLE_GEMINI_API",
+    "gemini.enable",
+    os.environ.get("ENABLE_GEMINI_API", "False").lower() == "true",
+)
+
+# Default Gemini base URL (using v1beta for latest features)
+if GEMINI_API_BASE_URL == "":
+    GEMINI_API_BASE_URL = "https://generativelanguage.googleapis.com/v1beta"
+else:
+    if GEMINI_API_BASE_URL.endswith("/"):
+        GEMINI_API_BASE_URL = GEMINI_API_BASE_URL[:-1]
+
+GEMINI_API_KEYS = os.environ.get("GEMINI_API_KEYS", "")
+GEMINI_API_KEYS = GEMINI_API_KEYS if GEMINI_API_KEYS != "" else GEMINI_API_KEY
+
+GEMINI_API_KEYS = [key.strip() for key in GEMINI_API_KEYS.split(";")]
+GEMINI_API_KEYS = PersistentConfig(
+    "GEMINI_API_KEYS", "gemini.api_keys", GEMINI_API_KEYS
+)
+
+GEMINI_API_BASE_URLS = os.environ.get("GEMINI_API_BASE_URLS", "")
+GEMINI_API_BASE_URLS = (
+    GEMINI_API_BASE_URLS if GEMINI_API_BASE_URLS != "" else GEMINI_API_BASE_URL
+)
+
+GEMINI_API_BASE_URLS = [
+    url.strip() if url != "" else "https://generativelanguage.googleapis.com/v1beta"
+    for url in GEMINI_API_BASE_URLS.split(";")
+]
+GEMINI_API_BASE_URLS = PersistentConfig(
+    "GEMINI_API_BASE_URLS", "gemini.api_base_urls", GEMINI_API_BASE_URLS
+)
+
+GEMINI_API_CONFIGS = PersistentConfig(
+    "GEMINI_API_CONFIGS",
+    "gemini.api_configs",
+    {},
+)
 
 
 ####################################

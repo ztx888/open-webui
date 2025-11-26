@@ -6,6 +6,7 @@
 
 	import { getOllamaConfig, updateOllamaConfig } from '$lib/apis/ollama';
 	import { getOpenAIConfig, updateOpenAIConfig, getOpenAIModels } from '$lib/apis/openai';
+	import { getGeminiConfig, updateGeminiConfig } from '$lib/apis/gemini';
 	import { getModels as _getModels, getBackendConfig } from '$lib/apis';
 	import { getConnectionsConfig, setConnectionsConfig } from '$lib/apis/configs';
 
@@ -17,6 +18,7 @@
 	import Plus from '$lib/components/icons/Plus.svelte';
 
 	import OpenAIConnection from './Connections/OpenAIConnection.svelte';
+	import GeminiConnection from './Connections/GeminiConnection.svelte';
 	import AddConnectionModal from '$lib/components/AddConnectionModal.svelte';
 	import OllamaConnection from './Connections/OllamaConnection.svelte';
 
@@ -40,14 +42,20 @@
 	let OPENAI_API_BASE_URLS = [''];
 	let OPENAI_API_CONFIGS = {};
 
+	let GEMINI_API_KEYS = [' '];
+	let GEMINI_API_BASE_URLS = [''];
+	let GEMINI_API_CONFIGS = {};
+
 	let ENABLE_OPENAI_API: null | boolean = null;
 	let ENABLE_OLLAMA_API: null | boolean = null;
+	let ENABLE_GEMINI_API: null | boolean = null;
 
 	let connectionsConfig = null;
 
 	let pipelineUrls = {};
 	let showAddOpenAIConnectionModal = false;
 	let showAddOllamaConnectionModal = false;
+	let showAddGeminiConnectionModal = false;
 
 	const updateOpenAIHandler = async () => {
 		if (ENABLE_OPENAI_API !== null) {
@@ -136,10 +144,57 @@
 		await updateOllamaHandler();
 	};
 
+	const updateGeminiHandler = async () => {
+		if (ENABLE_GEMINI_API !== null) {
+			// Remove trailing slashes
+			GEMINI_API_BASE_URLS = GEMINI_API_BASE_URLS.map((url) => url.replace(/\/$/, ''));
+
+			// Check if API KEYS length is same than API URLS length
+			if (GEMINI_API_KEYS.length !== GEMINI_API_BASE_URLS.length) {
+				// if there are more keys than urls, remove the extra keys
+				if (GEMINI_API_KEYS.length > GEMINI_API_BASE_URLS.length) {
+					GEMINI_API_KEYS = GEMINI_API_KEYS.slice(0, GEMINI_API_BASE_URLS.length);
+				}
+
+				// if there are more urls than keys, add empty keys
+				if (GEMINI_API_KEYS.length < GEMINI_API_BASE_URLS.length) {
+					const diff = GEMINI_API_BASE_URLS.length - GEMINI_API_KEYS.length;
+					for (let i = 0; i < diff; i++) {
+						GEMINI_API_KEYS.push('');
+					}
+				}
+			}
+
+			const res = await updateGeminiConfig(localStorage.token, {
+				ENABLE_GEMINI_API: ENABLE_GEMINI_API,
+				GEMINI_API_BASE_URLS: GEMINI_API_BASE_URLS,
+				GEMINI_API_KEYS: GEMINI_API_KEYS,
+				GEMINI_API_CONFIGS: GEMINI_API_CONFIGS
+			}).catch((error) => {
+				toast.error(`${error}`);
+			});
+
+			if (res) {
+				toast.success($i18n.t('Gemini API settings updated'));
+				await models.set(await getModels());
+			}
+		}
+	};
+
+	const addGeminiConnectionHandler = async (connection) => {
+		GEMINI_API_BASE_URLS = [...GEMINI_API_BASE_URLS, connection.url];
+		GEMINI_API_KEYS = [...GEMINI_API_KEYS, connection.key];
+		GEMINI_API_CONFIGS[GEMINI_API_BASE_URLS.length - 1] = connection.config;
+
+		await updateGeminiHandler();
+	};
+
 	onMount(async () => {
 		if ($user?.role === 'admin') {
 			let ollamaConfig = {};
 			let openaiConfig = {};
+
+			let geminiConfig = {};
 
 			await Promise.all([
 				(async () => {
@@ -149,16 +204,24 @@
 					openaiConfig = await getOpenAIConfig(localStorage.token);
 				})(),
 				(async () => {
+					geminiConfig = await getGeminiConfig(localStorage.token);
+				})(),
+				(async () => {
 					connectionsConfig = await getConnectionsConfig(localStorage.token);
 				})()
 			]);
 
 			ENABLE_OPENAI_API = openaiConfig.ENABLE_OPENAI_API;
 			ENABLE_OLLAMA_API = ollamaConfig.ENABLE_OLLAMA_API;
+			ENABLE_GEMINI_API = geminiConfig.ENABLE_GEMINI_API;
 
 			OPENAI_API_BASE_URLS = openaiConfig.OPENAI_API_BASE_URLS;
 			OPENAI_API_KEYS = openaiConfig.OPENAI_API_KEYS;
 			OPENAI_API_CONFIGS = openaiConfig.OPENAI_API_CONFIGS;
+
+			GEMINI_API_BASE_URLS = geminiConfig.GEMINI_API_BASE_URLS;
+			GEMINI_API_KEYS = geminiConfig.GEMINI_API_KEYS;
+			GEMINI_API_CONFIGS = geminiConfig.GEMINI_API_CONFIGS;
 
 			OLLAMA_BASE_URLS = ollamaConfig.OLLAMA_BASE_URLS;
 			OLLAMA_API_CONFIGS = ollamaConfig.OLLAMA_API_CONFIGS;
@@ -196,6 +259,7 @@
 
 	const submitHandler = async () => {
 		updateOpenAIHandler();
+		updateGeminiHandler();
 		updateOllamaHandler();
 
 		dispatch('save');
@@ -207,6 +271,12 @@
 <AddConnectionModal
 	bind:show={showAddOpenAIConnectionModal}
 	onSubmit={addOpenAIConnectionHandler}
+/>
+
+<AddConnectionModal
+	gemini
+	bind:show={showAddGeminiConnectionModal}
+	onSubmit={addGeminiConnectionHandler}
 />
 
 <AddConnectionModal
@@ -281,6 +351,72 @@
 												});
 												OPENAI_API_CONFIGS = newConfig;
 												updateOpenAIHandler();
+											}}
+										/>
+									{/each}
+								</div>
+							</div>
+						{/if}
+					</div>
+				</div>
+
+				<div class="my-2">
+					<div class="mt-2 space-y-2">
+						<div class="flex justify-between items-center text-sm">
+							<div class="  font-medium">{$i18n.t('Gemini API')}</div>
+
+							<div class="flex items-center">
+								<div class="">
+									<Switch
+										bind:state={ENABLE_GEMINI_API}
+										on:change={async () => {
+											updateGeminiHandler();
+										}}
+									/>
+								</div>
+							</div>
+						</div>
+
+						{#if ENABLE_GEMINI_API}
+							<div class="">
+								<div class="flex justify-between items-center">
+									<div class="font-medium text-xs">{$i18n.t('Manage Gemini API Connections')}</div>
+
+									<Tooltip content={$i18n.t(`Add Connection`)}>
+										<button
+											class="px-1"
+											on:click={() => {
+												showAddGeminiConnectionModal = true;
+											}}
+											type="button"
+										>
+											<Plus />
+										</button>
+									</Tooltip>
+								</div>
+
+								<div class="flex flex-col gap-1.5 mt-1.5">
+									{#each GEMINI_API_BASE_URLS as url, idx}
+										<GeminiConnection
+											bind:url={GEMINI_API_BASE_URLS[idx]}
+											bind:key={GEMINI_API_KEYS[idx]}
+											bind:config={GEMINI_API_CONFIGS[idx]}
+											onSubmit={() => {
+												updateGeminiHandler();
+											}}
+											onDelete={() => {
+												GEMINI_API_BASE_URLS = GEMINI_API_BASE_URLS.filter(
+													(url, urlIdx) => idx !== urlIdx
+												);
+												GEMINI_API_KEYS = GEMINI_API_KEYS.filter((key, keyIdx) => idx !== keyIdx);
+
+												let newConfig = {};
+												GEMINI_API_BASE_URLS.forEach((url, newIdx) => {
+													newConfig[newIdx] =
+														GEMINI_API_CONFIGS[newIdx < idx ? newIdx : newIdx + 1];
+												});
+												GEMINI_API_CONFIGS = newConfig;
+												updateGeminiHandler();
 											}}
 										/>
 									{/each}
