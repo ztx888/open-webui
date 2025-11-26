@@ -793,6 +793,7 @@
 	"Functions allow arbitrary code execution.": "注意：函数有权执行任意代码",
 	"Functions imported successfully": "函数导入成功",
 	"Gemini": "Gemini",
+	"Gemini API": "Gemini 接口",
 	"Gemini API Key": "Gemini 接口密钥",
 	"Gemini API Key is required.": "Gemini 接口密钥是必填项。",
 	"Gemini Base URL": "Gemini 接口地址",

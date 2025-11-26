@@ -291,25 +291,46 @@ async def get_model_profile_image(id: str, user=Depends(get_verified_user)):
             if model.meta.profile_image_url.startswith("http"):
                 return Response(
                     status_code=status.HTTP_302_FOUND,
-                    headers={"Location": model.meta.profile_image_url},
+                    headers={
+                        "Location": model.meta.profile_image_url,
+                        "Cache-Control": "public, max-age=3600",  # Cache for 1 hour
+                    },
                 )
             elif model.meta.profile_image_url.startswith("data:image"):
                 try:
                     header, base64_data = model.meta.profile_image_url.split(",", 1)
                     image_data = base64.b64decode(base64_data)
                     image_buffer = io.BytesIO(image_data)
+                    
+                    # Generate ETag based on content hash for cache validation
+                    import hashlib
+                    etag = hashlib.md5(image_data).hexdigest()
 
                     return StreamingResponse(
                         image_buffer,
                         media_type="image/png",
-                        headers={"Content-Disposition": "inline; filename=image.png"},
+                        headers={
+                            "Content-Disposition": "inline; filename=image.png",
+                            "Cache-Control": "public, max-age=3600",  # Cache for 1 hour
+                            "ETag": f'"{etag}"',
+                        },
                     )
                 except Exception as e:
                     pass
 
-        return FileResponse(f"{STATIC_DIR}/favicon.png")
+        return FileResponse(
+            f"{STATIC_DIR}/favicon.png",
+            headers={
+                "Cache-Control": "public, max-age=86400"  # Cache for 24 hours
+            }
+        )
     else:
-        return FileResponse(f"{STATIC_DIR}/favicon.png")
+        return FileResponse(
+            f"{STATIC_DIR}/favicon.png",
+            headers={
+                "Cache-Control": "public, max-age=86400"  # Cache for 24 hours
+            }
+        )
 
 
 ############################

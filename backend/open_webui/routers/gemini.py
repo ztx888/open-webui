@@ -162,6 +162,9 @@ async def get_models(
                             "id": full_id,
                             "name": model_id,
                             "owned_by": "google",
+                            "gemini": {
+                                "name": f"models/{model_id}"
+                            },
                             "urlIdx": idx,
                             "tags": tags,
                         })
