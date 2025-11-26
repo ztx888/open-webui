@@ -546,13 +546,35 @@ async def generate_chat_completion(
     # Convert payload
     gemini_payload = convert_openai_to_gemini_payload(form_data)
     
-    actual_model_id = model_info.get("gemini", {}).get("name", "").replace("models/", "")
+    log.info(f"Gemini Request model_info: {model_info}")
+
+    # Determine actual model ID
+    actual_model_id = ""
+    if "gemini" in model_info:
+        actual_model_id = model_info["gemini"].get("name", "")
+    
+    if not actual_model_id:
+        actual_model_id = model_info.get("name", model_id)
+
+    # Final fallback
+    if not actual_model_id:
+        actual_model_id = model_id
+
+    # Clean up model ID
+    if actual_model_id.startswith("models/"):
+        actual_model_id = actual_model_id[7:]
+    
+    if actual_model_id.startswith("/"):
+        actual_model_id = actual_model_id[1:]
+        
+    log.info(f"Gemini Request: model_id={model_id} actual_model_id={actual_model_id}")
     
     # Construct URL
     stream = form_data.get("stream", False)
     action = "streamGenerateContent?alt=sse" if stream else "generateContent"
     
     target_url = f"{url}/models/{actual_model_id}:{action}&key={key}"
+    log.info(f"Gemini Target URL: {target_url}")
 
     if stream:
         async def stream_wrapper():
